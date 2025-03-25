@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User  implements EntityModel<User> {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     @NotBlank(message = "Username is mandatory")
     private String username;
@@ -21,6 +21,12 @@ public class User {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public User update(User update) {
+        this.username = update.getUsername();
+        return this;
     }
 
     public void setId(Integer id) {

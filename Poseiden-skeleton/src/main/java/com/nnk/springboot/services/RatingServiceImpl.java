@@ -1,4 +1,4 @@
 package com.nnk.springboot.services;
 
-public interface BidService {
+public class RatingServiceImpl {
 }

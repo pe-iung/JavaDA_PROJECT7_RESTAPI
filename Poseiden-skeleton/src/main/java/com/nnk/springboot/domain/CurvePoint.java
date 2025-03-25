@@ -2,11 +2,9 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 
@@ -14,7 +12,8 @@ import java.sql.Timestamp;
 @Table(name = "curvepoint")
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurvePoint {
+@Data
+public class CurvePoint implements EntityModel<CurvePoint> {
     // TODO: Map columns in data table CURVEPOINT with corresponding java fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +28,20 @@ public class CurvePoint {
     Double value;
     @Column
     Timestamp creationDate;
+
+    public CurvePoint(int curveId, double term, double value) {
+        this.curveId=curveId;
+        this.term=term;
+        this.value=value;
+    }
+
+    /**
+     * @param update
+     * @return
+     */
+    @Override
+    public CurvePoint update(CurvePoint update) {
+        this.curveId = update.getCurveId();
+        return this;
+    }
 }

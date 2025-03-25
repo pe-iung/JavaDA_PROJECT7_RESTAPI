@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trade {
+public class Trade  implements EntityModel<Trade> {
     // TODO: Map columns in data table TRADE with corresponding java fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,4 +59,24 @@ public class Trade {
     @Column
     String side;
 
+    public Trade(String tradeAccount, String type) {
+        this.account=tradeAccount;
+        this.type = type;
+    }
+
+    @Override
+    public Integer getId() {
+        return tradeId;
+    }
+
+    /**
+     * @param update
+     * @return
+     */
+    @Override
+    public Trade update(Trade update) {
+        this.account = update.getAccount();
+
+        return this;
+    }
 }
