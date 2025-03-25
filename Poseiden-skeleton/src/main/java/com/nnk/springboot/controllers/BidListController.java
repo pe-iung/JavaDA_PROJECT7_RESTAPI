@@ -1,7 +1,8 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.services.CrudService;
+import com.nnk.springboot.services.BidServiceImpl;
+import com.nnk.springboot.services.base.CrudService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,10 @@ public class BidListController {
     public String home(Model model)
     {
         // TODO: call service find all bids to show to the view
+        BidServiceImpl bidListService;
+
+        //todo: ask frank why findAll is not working
+        //bidListService.findAll();
         return "bidList/list";
     }
 

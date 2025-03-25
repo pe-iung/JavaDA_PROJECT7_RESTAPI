@@ -3,6 +3,7 @@ package com.nnk.springboot.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
@@ -24,6 +25,7 @@ public class BidList implements EntityModel<BidList> {
     @Column
     String type;
 
+    @Getter
     @Column
     Double bidQuantity;
     @Column
@@ -75,10 +77,10 @@ public class BidList implements EntityModel<BidList> {
     @Column
     String side;
 
-    public BidList(String account, String type, double bid) {
+    public BidList(String account, String type, double bidQuantity) {
         this.account = account;
         this.type=type;
-        this.bid = bid;
+        this.bidQuantity = bidQuantity;
     }
 
     @Override

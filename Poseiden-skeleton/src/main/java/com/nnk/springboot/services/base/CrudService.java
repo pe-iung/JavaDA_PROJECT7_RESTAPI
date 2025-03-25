@@ -1,4 +1,4 @@
-package com.nnk.springboot.services;
+package com.nnk.springboot.services.base;
 
 public interface CrudService<M> {
 

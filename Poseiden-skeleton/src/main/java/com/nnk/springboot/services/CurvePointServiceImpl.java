@@ -1,10 +1,11 @@
 package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.CurvePoint;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.nnk.springboot.repositories.CurvePointRepository;
+import com.nnk.springboot.services.base.AbstractCrudService;
 
-public class CurvePointServiceImpl extends AbstractCrudService<CurvePoint>{
-    protected CurvePointServiceImpl(JpaRepository<CurvePoint, Integer> repository) {
+public class CurvePointServiceImpl extends AbstractCrudService<CurvePoint> {
+    protected CurvePointServiceImpl(CurvePointRepository repository) {
         super(repository);
     }
 }
