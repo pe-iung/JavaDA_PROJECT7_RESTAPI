@@ -5,6 +5,8 @@ import com.nnk.springboot.domain.EntityModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.Assert;
 
+import java.util.List;
+
 public abstract class AbstractCrudService<M extends EntityModel<M>> implements CrudService<M> {
 
     private  final JpaRepository<M, Integer> repository;
@@ -36,5 +38,10 @@ public abstract class AbstractCrudService<M extends EntityModel<M>> implements C
     @Override
     public void delete(Integer id) {
         this.repository.deleteById(id);
+    }
+
+    @Override
+    public List<M> findAll() {
+        return this.repository.findAll();
     }
 }

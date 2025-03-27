@@ -1,5 +1,7 @@
 package com.nnk.springboot.services;
 
+import java.util.List;
+
 public interface CrudService<M> {
 
     M save(M entity);
@@ -10,4 +12,5 @@ public interface CrudService<M> {
 
     void delete(Integer id);
 
+    List<M> findAll();
 }

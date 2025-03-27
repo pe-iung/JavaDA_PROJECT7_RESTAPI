@@ -1,7 +1,7 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.configuration.SpringSecurityConfig;
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.services.impl.BidServiceImpl;
 import com.nnk.springboot.services.CrudService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class BidListController {
-    // TODO: Inject Bid service
 
-
-   private final CrudService<BidList> service;
-
+    private final CrudService<BidList> bidService;
+    private final SpringSecurityConfig springSecurityConfig;
 
     @RequestMapping("/bidList/list")
     public String home(Model model)
     {
         // TODO: call service find all bids to show to the view
-        BidServiceImpl bidListService;
+        List<BidList> bidLists= bidService.findAll();
+        model.addAttribute("remoteUser","toto");
+        model.addAttribute("bidLists", bidLists);
 
-        //todo: ask frank why findAll is not working
-        //bidListService.findAll();
         return "bidList/list";
     }
 
