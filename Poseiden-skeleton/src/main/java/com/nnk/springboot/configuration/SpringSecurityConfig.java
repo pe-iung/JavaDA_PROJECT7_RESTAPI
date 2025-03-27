@@ -1,15 +1,21 @@
 package com.nnk.springboot.configuration;
 
+import com.nnk.springboot.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Collection;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Configuration
@@ -17,27 +23,52 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SpringSecurityConfig {
     //private final CustomUserDetailsService customUserDetailsService;
 
+    private final UserRepository userRepository;
+
+    @Bean
+    public UserDetailsService customUserDetailsService() {
+        return (String username) -> userRepository.findByUsername(username)
+                .map(user -> new UserDetails() {
+                    @Override
+                    public Collection<? extends GrantedAuthority> getAuthorities() {
+                        return List.of(new SimpleGrantedAuthority(user.getRole()));
+                    }
+
+                    @Override
+                    public String getPassword() {
+                        return user.getPassword();
+                    }
+
+                    @Override
+                    public String getUsername() {
+                        return user.getUsername();
+                    }
+                })
+                .orElseThrow();
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-//                    auth.requestMatchers("/h2-console").permitAll();
-//                    auth.requestMatchers("/login").permitAll();
-//                    auth.requestMatchers("/signup", "/css/**", "/js/**", "/webjars/**").permitAll();
-//                    auth.anyRequest().authenticated();
-                    auth.anyRequest().permitAll();
+                    auth.requestMatchers("/h2-console").permitAll()
+                    .requestMatchers("/app/login").permitAll()
+                    .requestMatchers("/signup", "/css/**", "/js/**", "/webjars/**").permitAll()
+                            .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .anyRequest().authenticated();
+
+//                    auth.anyRequest().permitAll();
 
                 })
 
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/account", true)
+                        .loginPage("/app/login")
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 )
 

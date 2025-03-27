@@ -1,7 +1,8 @@
-package com.nnk.springboot.services;
+package com.nnk.springboot.services.impl;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import com.nnk.springboot.services.AbstractCrudService;
 import org.springframework.stereotype.Service;
 
 
