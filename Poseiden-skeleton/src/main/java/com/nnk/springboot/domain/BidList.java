@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BidList implements EntityModel<BidList> {
-    // TODO: Map columns in data table BIDLIST with corresponding java fields
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer BidListId;
@@ -60,6 +60,8 @@ public class BidList implements EntityModel<BidList> {
     String book;
     @Column
     String creationName;
+
+    //todo : how to generate timestamp automatically ? like an id ?
     @Column
     Timestamp creationDate;
     @Column

@@ -1,6 +1,7 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.configuration.SpringSecurityConfig;
+import com.nnk.springboot.controllers.DTO.BidListRequest;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.services.CrudService;
 import lombok.RequiredArgsConstructor;
@@ -32,13 +33,17 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/add")
-    public String addBidForm(BidList bid) {
+    public String addBidForm(BidListRequest bidListRequest) {
+
         return "bidList/add";
     }
 
     @PostMapping("/bidList/validate")
-    public String validate(@Validated BidList bid, BindingResult result, Model model) {
+    public String validate(@Validated BidListRequest bidListRequest, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
+        model.addAttribute("bidListRequest", bidListRequest);
+        model.addAttribute("result", result);
+        bidService.save(new BidList(bidListRequest.getAccount(), bidListRequest.getType(), bidListRequest.getBidQuantity()));
         return "bidList/add";
     }
 
@@ -49,9 +54,12 @@ public class BidListController {
     }
 
     @PostMapping("/bidList/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Validated BidList bidList,
+    public String updateBid(@PathVariable("id") Integer id, @Validated BidListRequest bidListRequest,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
+        model.addAttribute("bidListId", id);
+        model.addAttribute("bidListRequest", bidListRequest);
+        model.addAttribute("result", result);
         return "redirect:/bidList/list";
     }
 
