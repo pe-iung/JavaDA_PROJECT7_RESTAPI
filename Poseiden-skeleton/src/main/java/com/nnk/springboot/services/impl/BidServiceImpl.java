@@ -12,10 +12,6 @@ public class BidServiceImpl extends AbstractCrudService<BidList> {
     public BidServiceImpl(BidListRepository repository){
         super(repository);
     }
-    
-//    public List<BidList> findAll() {
-//        BidListRepository repository;
-//        return repository.findAll();
-//    }
+
 
 }

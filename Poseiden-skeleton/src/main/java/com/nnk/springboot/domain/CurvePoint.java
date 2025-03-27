@@ -44,4 +44,11 @@ public class CurvePoint implements EntityModel<CurvePoint> {
         this.curveId = update.getCurveId();
         return this;
     }
+
+    public CurvePoint(Integer curveId, Timestamp asOfDate, Double term, Double value){
+        this.curveId = curveId;
+        this.term = term;
+        this.asOfDate = asOfDate;
+        this.value = value;
+    }
 }

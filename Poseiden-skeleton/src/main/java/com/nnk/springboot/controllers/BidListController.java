@@ -25,9 +25,7 @@ public class BidListController {
     @RequestMapping("/bidList/list")
     public String home(Model model)
     {
-        // TODO: call service find all bids to show to the view
         List<BidList> bidLists= bidService.findAll();
-        model.addAttribute("remoteUser","toto");
         model.addAttribute("bidLists", bidLists);
 
         return "bidList/list";
