@@ -4,6 +4,8 @@ import com.nnk.springboot.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -43,6 +45,10 @@ public class SpringSecurityConfig {
                     public String getUsername() {
                         return user.getUsername();
                     }
+
+                    public int getId() {
+                        return user.getId();
+                    }
                 })
                 .orElseThrow();
     }
@@ -54,10 +60,9 @@ public class SpringSecurityConfig {
                     auth.requestMatchers("/h2-console").permitAll()
                     .requestMatchers("/app/login").permitAll()
                     .requestMatchers("/signup", "/css/**", "/js/**", "/webjars/**").permitAll()
-                            .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated();
 
-//                    auth.anyRequest().permitAll();
 
                 })
 
@@ -80,12 +85,12 @@ public class SpringSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder) throws Exception {
-//        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-//        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
-//        return authenticationManagerBuilder.build();
-//    }
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(this.customUserDetailsService()).passwordEncoder(bCryptPasswordEncoder);
+        return authenticationManagerBuilder.build();
+    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.nnk.springboot;
+package com.nnk.springboot.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

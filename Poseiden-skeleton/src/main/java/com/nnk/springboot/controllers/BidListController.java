@@ -43,8 +43,24 @@ public class BidListController {
         // TODO: check data valid and save to db, after saving return bid list
         model.addAttribute("bidListRequest", bidListRequest);
         model.addAttribute("result", result);
-        bidService.save(new BidList(bidListRequest.getAccount(), bidListRequest.getType(), bidListRequest.getBidQuantity()));
-        return "bidList/add";
+        if (result.hasErrors()) {
+            // If there are errors, return to the form with error messages
+            return "bidList/add";
+        }
+        try {
+            bidService.save(new BidList(
+                    bidListRequest.getAccount(),
+                    bidListRequest.getType(),
+                    bidListRequest.getBidQuantity()
+            ));
+            // Redirect to list page after successful save
+            return "redirect:/bidList/list";
+        } catch (Exception e) {
+            // Handle any errors during save
+            result.rejectValue("global", "error.global", "An error occurred while saving the bid");
+            return "bidList/add";
+        }
+
     }
 
     @GetMapping("/bidList/update/{id}")
