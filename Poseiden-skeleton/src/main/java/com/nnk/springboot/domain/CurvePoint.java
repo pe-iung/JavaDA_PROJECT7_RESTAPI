@@ -44,11 +44,6 @@ public class CurvePoint implements EntityModel<CurvePoint> {
         return this;
     }
 
-    public CurvePoint(Integer curveId, Double term, Double value){
-        this.curveId = curveId;
-        this.term = term;
-        this.value = value;
-    }
 
 //    public CurvePoint(int id, Integer curveId, Double term, Double value){
 //        this.id = id;

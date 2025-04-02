@@ -2,15 +2,18 @@ package com.nnk.springboot.controllers.DTO;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+@Data
+@RequiredArgsConstructor
 public class CurvePointRequest {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @NotNull(message = "account can not be null, empty or blank")
+    @Positive(message = "curveID must be a positive integer")
     int curveId;
 
     @Positive(message = "term must be a positive value")

@@ -1,5 +1,6 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.controllers.DTO.CurvePointRequest;
 import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.services.CrudService;
 import lombok.RequiredArgsConstructor;
@@ -29,14 +30,32 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/add")
-    public String addBidForm(CurvePoint bid) {
+    public String addCurveForm(CurvePointRequest curvePointRequest) {
         return "curvePoint/add";
     }
 
     @PostMapping("/curvePoint/validate")
-    public String validate(@Validated CurvePoint curvePoint, BindingResult result, Model model) {
+    public String validate(@Validated CurvePointRequest curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
-        return "curvePoint/add";
+        model.addAttribute("curvePoint",curvePoint);
+        model.addAttribute("result",result);
+        if (result.hasErrors()) {
+            return "curvePoint/add";
+        }
+        try {
+            CurvePoint newCurvePoint = new CurvePoint(
+                    curvePoint.getCurveId(),
+                    curvePoint.getTerm(),
+                    curvePoint.getValue()
+            );
+            curvePointService.save(newCurvePoint);
+
+
+            return "redirect:/curvePoint/list";
+        } catch (Exception e) {
+            result.rejectValue("global", "error.global", "An error occurred while saving the bid");
+            return "curvePoint/add";
+        }
     }
 
     @GetMapping("/curvePoint/update/{id}")
