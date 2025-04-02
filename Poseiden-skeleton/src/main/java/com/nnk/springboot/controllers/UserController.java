@@ -38,17 +38,31 @@ public class UserController {
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
             model.addAttribute("users", userRepository.findAll());
-            return "redirect:/user/list";
+            return "redirect:/login";
         }
         return "user/add";
     }
-
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         user.setPassword("");
         model.addAttribute("user", user);
         return "user/update";
+    }
+
+    @PostMapping("/user/myself")
+    public String updateMyself(@PathVariable("id") Integer id, @Validated User user,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "user/update";
+        }
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setId(id);
+        userRepository.save(user);
+        model.addAttribute("users", userRepository.findAll());
+        return "redirect:/home";
     }
 
     @PostMapping("/user/update/{id}")

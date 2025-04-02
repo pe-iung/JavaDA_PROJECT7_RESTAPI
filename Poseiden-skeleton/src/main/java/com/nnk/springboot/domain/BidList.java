@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.Clock;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bidlist")
@@ -63,7 +65,8 @@ public class BidList implements EntityModel<BidList> {
 
     //todo : how to generate timestamp automatically ? like an id ?
     @Column
-    Timestamp creationDate;
+    Timestamp creationDate = Timestamp.valueOf(LocalDateTime.now(Clock.systemUTC()));
+
     @Column
     String revisionName;
     @Column
@@ -85,6 +88,13 @@ public class BidList implements EntityModel<BidList> {
         this.bidQuantity = bidQuantity;
     }
 
+    public BidList(Integer id, String account, String type, double bidQuantity) {
+        this.BidListId=id;
+        this.account = account;
+        this.type=type;
+        this.bidQuantity = bidQuantity;
+    }
+
     @Override
     public Integer getId(){
         return BidListId;
@@ -94,8 +104,9 @@ public class BidList implements EntityModel<BidList> {
     @Override
     public BidList update(BidList update){
         this.account = update.getAccount();
-
-
+        this.bidQuantity= update.getBidQuantity();
+        this.type = update.getType();
         return this;
     }
+    
 }

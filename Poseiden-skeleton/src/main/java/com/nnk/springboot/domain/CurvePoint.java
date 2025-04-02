@@ -35,20 +35,25 @@ public class CurvePoint implements EntityModel<CurvePoint> {
         this.value=value;
     }
 
-    /**
-     * @param update
-     * @return
-     */
+
     @Override
     public CurvePoint update(CurvePoint update) {
         this.curveId = update.getCurveId();
+        this.term = update.getTerm();
+        this.value = update.getValue();
         return this;
     }
 
-    public CurvePoint(Integer curveId, Timestamp asOfDate, Double term, Double value){
+    public CurvePoint(Integer curveId, Double term, Double value){
         this.curveId = curveId;
         this.term = term;
-        this.asOfDate = asOfDate;
         this.value = value;
     }
+
+//    public CurvePoint(int id, Integer curveId, Double term, Double value){
+//        this.id = id;
+//        this.curveId = curveId;
+//        this.term = term;
+//        this.value = value;
+//    }
 }

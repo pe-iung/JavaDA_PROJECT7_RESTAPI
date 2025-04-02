@@ -6,4 +6,6 @@ public interface EntityModel<M> {
     Integer getId();
 
     M update(M update);
+
+    //void delete(int id);
 }

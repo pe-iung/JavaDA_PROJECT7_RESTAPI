@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class BidListRequest {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int bitlistId;
+    int id;
 
     @NotBlank(message = "account can not be null, empty or blank")
     String account;
@@ -23,5 +23,9 @@ public class BidListRequest {
     @Positive(message = "bidQuantity must be a positive value")
     double bidQuantity;
 
-
+    public BidListRequest(String account, String type, double bidQuantity) {
+        this.account = account;
+        this.type=type;
+        this.bidQuantity = bidQuantity;
+    }
 }

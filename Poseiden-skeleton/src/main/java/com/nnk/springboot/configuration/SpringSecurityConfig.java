@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.time.Clock;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,6 +25,11 @@ import java.util.List;
 @EnableWebSecurity
 public class SpringSecurityConfig {
     //private final CustomUserDetailsService customUserDetailsService;
+
+    @Bean
+    Clock clock(){
+        return Clock.systemUTC();
+    }
 
     private final UserRepository userRepository;
 
@@ -62,8 +68,6 @@ public class SpringSecurityConfig {
                     .requestMatchers("/signup", "/css/**", "/js/**", "/webjars/**").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated();
-
-
                 })
 
                 .formLogin(form -> form
@@ -76,6 +80,9 @@ public class SpringSecurityConfig {
                         .logoutSuccessUrl("/")
                         .permitAll()
                 )
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedPage("/403.html"))
+
 
                 .build();
     }

@@ -40,7 +40,7 @@ public class BidListController {
 
     @PostMapping("/bidList/validate")
     public String validate(@Validated BidListRequest bidListRequest, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return bid list
+
         model.addAttribute("bidListRequest", bidListRequest);
         model.addAttribute("result", result);
         if (result.hasErrors()) {
@@ -66,6 +66,13 @@ public class BidListController {
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Bid by Id and to model then show to the form
+        model.addAttribute("bidListId", id);
+        BidList bidlist = bidService.getById(id);
+        BidListRequest bidListRequest = new BidListRequest(
+                bidlist.getAccount(),
+                bidlist.getType(),
+                bidlist.getBidQuantity());
+        model.addAttribute("bidListRequest", bidListRequest);
         return "bidList/update";
     }
 
@@ -76,12 +83,29 @@ public class BidListController {
         model.addAttribute("bidListId", id);
         model.addAttribute("bidListRequest", bidListRequest);
         model.addAttribute("result", result);
-        return "redirect:/bidList/list";
+
+        if (result.hasErrors()) {
+            return "bidList/update";
+        }
+
+        try {
+            bidService.update(new BidList(id,
+                    bidListRequest.getAccount(),
+                    bidListRequest.getType(),
+                    bidListRequest.getBidQuantity()
+            ));
+            return "redirect:/bidList/list";
+        } catch (Exception e) {
+            result.rejectValue("global", "error.global", "An error occurred while saving the bid");
+            return "bidList/update";
+        }
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Bid by Id and delete the bid, return to Bid list
+        model.addAttribute("id",id);
+        bidService.delete(id);
         return "redirect:/bidList/list";
     }
 }
