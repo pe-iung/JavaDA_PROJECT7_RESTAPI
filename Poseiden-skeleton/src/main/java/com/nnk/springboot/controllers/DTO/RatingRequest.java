@@ -1,18 +1,15 @@
 package com.nnk.springboot.controllers.DTO;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class RatingRequest {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
 
     @NotBlank(message = "sandPRating can not be null, empty or blank")
     String sandPRating;
@@ -26,13 +23,4 @@ public class RatingRequest {
     @Positive(message = "orderNumber must be a positive value")
     Integer orderNumber;
 
-
-
-
-    public RatingRequest(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {
-        this.moodysRating= moodysRating;
-        this.sandPRating = sandPRating;
-        this.fitchRating = fitchRating;
-        this.orderNumber = orderNumber;
-    }
 }
