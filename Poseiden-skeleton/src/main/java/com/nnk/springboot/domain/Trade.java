@@ -76,6 +76,11 @@ public class Trade  implements EntityModel<Trade> {
     @Override
     public Trade update(Trade update) {
         this.account = update.getAccount();
+        this.type = update.getType();
+        this.buyQuantity = update.getBuyQuantity();
+        this.sellQuantity = update.getSellQuantity();
+        this.buyPrice = update.getBuyPrice();
+        this.sellPrice = update.getSellPrice();
 
         return this;
     }

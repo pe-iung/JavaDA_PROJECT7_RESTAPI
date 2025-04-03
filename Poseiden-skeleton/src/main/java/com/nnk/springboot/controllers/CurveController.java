@@ -71,7 +71,6 @@ public class CurveController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
          CurvePoint curvepoint = curvePointService.getById(id);
          CurvePointRequest curvePointRequest = new CurvePointRequest(
-                 curvepoint.getId(),
                  curvepoint.getCurveId(),
                  curvepoint.getTerm(),
                  curvepoint.getValue());

@@ -44,7 +44,11 @@ public class RuleName  implements EntityModel<RuleName> {
     @Override
     public RuleName update(RuleName update) {
         this.name = update.getName();
-        //TODO : check if moire data needs to be updated
+        this.description = update.getDescription();
+        this.json = update.getJson();
+        this.template = update.getTemplate();
+        this.sqlStr = update.getSqlStr();
+        this.sqlPart = update.getSqlPart();
         return this;
     }
 }

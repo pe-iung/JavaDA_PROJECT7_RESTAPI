@@ -40,6 +40,7 @@ public class Rating  implements EntityModel<Rating> {
         this.moodysRating = update.getMoodysRating();
         this.sandPRating = update.getSandPRating();
         this.fitchRating = update.getFitchRating();
+        this.orderNumber = update.getOrderNumber();
         return this;
     }
 }
