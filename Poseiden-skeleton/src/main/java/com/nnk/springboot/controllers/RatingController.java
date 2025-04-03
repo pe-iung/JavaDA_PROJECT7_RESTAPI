@@ -68,27 +68,33 @@ public class RatingController {
     }
 
     @GetMapping("/rating/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-
-        Rating rating = ratingService.getById(id);
-        RatingRequest ratingRequest = new RatingRequest(
-                rating.getSandPRating(),
-                rating.getMoodysRating(),
-                rating.getFitchRating(),
-                rating.getOrderNumber()
-        );
-        model.addAttribute("ratingRequest", ratingRequest);
-        model.addAttribute("ratingId", id);
-        return "rating/update";
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            Rating rating = ratingService.getById(id);
+            RatingRequest ratingRequest = new RatingRequest(
+                    rating.getSandPRating(),
+                    rating.getMoodysRating(),
+                    rating.getFitchRating(),
+                    rating.getOrderNumber()
+            );
+            model.addAttribute("ratingRequest", ratingRequest);
+            model.addAttribute("ratingId", id);
+            return "/rating/update";
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage","error updating the id" + id + " with error = " + e);
+            return "redirect:rating/update";
+        }
     }
 
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Validated RatingRequest ratingRequest,
-                             BindingResult result, Model model) {
+                             BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
         if (result.hasErrors())
         {
-            return "rating/update/{id}";
+            return "/rating/update/{id}";
         }
         try {
 
@@ -98,18 +104,20 @@ public class RatingController {
             updatedRating.setFitchRating(ratingRequest.getFitchRating());
             updatedRating.setOrderNumber(ratingRequest.getOrderNumber());
             ratingService.update(updatedRating);
-            model.addAttribute(
+            redirectAttributes.addFlashAttribute(
                     "successMessage",
                     "Rating updated succesfully for id = " + id);
+            return "redirect:/rating/list";
 
 
         }
 
         catch (Exception e) {
-            model.addAttribute("errorMessage", "ERROR: rating not updated because of error : " + e);
+            redirectAttributes.addFlashAttribute("errorMessage", "ERROR: rating not updated for id = " + id + " because of error : " + e);
+            return "redirect:/rating/list";
         }
 
-        return "redirect:/rating/list";
+
     }
 
     @GetMapping("/rating/delete/{id}")
