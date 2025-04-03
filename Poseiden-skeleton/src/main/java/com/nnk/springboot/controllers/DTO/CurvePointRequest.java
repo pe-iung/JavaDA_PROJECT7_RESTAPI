@@ -22,7 +22,8 @@ public class CurvePointRequest {
     @Positive(message = "value must be a positive value")
     double value;
 
-    public CurvePointRequest(int curveId, double term, double value) {
+    public CurvePointRequest(int id, int curveId, double term, double value) {
+        this.id=id;
         this.curveId = curveId;
         this.term=term;
         this.value = value;

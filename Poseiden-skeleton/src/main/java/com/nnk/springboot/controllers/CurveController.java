@@ -35,18 +35,18 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/validate")
-    public String validate(@Validated CurvePointRequest curvePoint, BindingResult result, Model model) {
+    public String validate(@Validated CurvePointRequest curvePointRequest, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
-        model.addAttribute("curvePoint",curvePoint);
+        model.addAttribute("curvePointRequest",curvePointRequest);
         model.addAttribute("result",result);
         if (result.hasErrors()) {
             return "curvePoint/add";
         }
         try {
             CurvePoint newCurvePoint = new CurvePoint(
-                    curvePoint.getCurveId(),
-                    curvePoint.getTerm(),
-                    curvePoint.getValue()
+                    curvePointRequest.getCurveId(),
+                    curvePointRequest.getTerm(),
+                    curvePointRequest.getValue()
             );
             curvePointService.save(newCurvePoint);
 
@@ -60,14 +60,33 @@ public class CurveController {
 
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get CurvePoint by Id and to model then show to the form
+         CurvePoint curvepoint = curvePointService.getById(id);
+         CurvePointRequest curvePointRequest = new CurvePointRequest(
+                 curvepoint.getId(),
+                 curvepoint.getCurveId(),
+                 curvepoint.getTerm(),
+                 curvepoint.getValue());
+
+         model.addAttribute("curvePointRequest", curvePointRequest);
+
         return "curvePoint/update";
     }
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Validated CurvePoint curvePoint,
+    public String updateBid(@PathVariable("id") Integer id, @Validated CurvePointRequest curvePointRequest,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
+
+        if (result.hasErrors()) {
+            return "curvePoint/update";
+        }
+        CurvePoint updatedCurvePoint = curvePointService.getById(id);
+        updatedCurvePoint.setCurveId(curvePointRequest.getCurveId());
+        updatedCurvePoint.setTerm(curvePointRequest.getTerm());
+        updatedCurvePoint.setValue(curvePointRequest.getValue());
+
+        curvePointService.update(updatedCurvePoint);
+
         return "redirect:/curvePoint/list";
     }
 
