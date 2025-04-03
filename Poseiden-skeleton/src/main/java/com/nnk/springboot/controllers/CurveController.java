@@ -36,7 +36,11 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/validate")
-    public String validate(@Validated CurvePointRequest curvePointRequest, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+    public String validate(
+            @Validated CurvePointRequest curvePointRequest,
+            BindingResult result,
+            Model model,
+            RedirectAttributes redirectAttributes) {
         // TODO: check data valid and save to db, after saving return Curve list
         model.addAttribute("curvePointRequest",curvePointRequest);
         model.addAttribute("result",result);

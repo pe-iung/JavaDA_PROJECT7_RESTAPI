@@ -5,9 +5,24 @@
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<!-- Alerts -->
+			<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+				<span th:text="${successMessage}"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<span th:text="${errorMessage}"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<div class="row">
 		<div class="col-6">
@@ -26,8 +41,11 @@
 		</div>
 	</div>
 	<div class="row"><h2>Rating List</h2></div>
-	<div class="row">
+	<div class="row mb-3"> <!-- Added margin-bottom for spacing -->
+		<div class="col">
 		<a href="/rating/add" class="btn btn-primary btn-sm">Add New</a>
+		</div>
+	</div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -45,7 +63,7 @@
 					<td th:text="${rating.moodysRating}"></td>
 					<td th:text="${rating.sandPRating}"></td>
 					<td th:text="${rating.fitchRating}"></td>
-					<td th:text="${rating.order}"></td>
+					<td th:text="${rating.orderNumber}"></td>
 					<td style="width: 15%" class="text-center">
 						<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
 						<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a>
@@ -53,7 +71,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
 </div>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

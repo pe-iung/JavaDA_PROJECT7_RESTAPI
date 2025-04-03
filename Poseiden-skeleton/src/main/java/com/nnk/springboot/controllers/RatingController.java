@@ -1,6 +1,9 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.controllers.DTO.RatingRequest;
 import com.nnk.springboot.domain.Rating;
+import com.nnk.springboot.services.CrudService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,27 +12,59 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 @Controller
 public class RatingController {
-    // TODO: Inject Rating service
+
+
+    private final CrudService<Rating> ratingService;
 
     @RequestMapping("/rating/list")
     public String home(Model model)
     {
-        // TODO: find all Rating, add to model
+        List<Rating> ratings = ratingService.findAll();
+        model.addAttribute("ratings", ratings);
         return "rating/list";
     }
 
     @GetMapping("/rating/add")
-    public String addRatingForm(Rating rating) {
+    public String addRatingForm(RatingRequest ratingRequest) {
         return "rating/add";
     }
 
     @PostMapping("/rating/validate")
-    public String validate(@Validated Rating rating, BindingResult result, Model model) {
+    public String validate(
+            @Validated RatingRequest ratingRequest,
+            BindingResult result,
+            Model model,
+            RedirectAttributes redirectAttributes) {
         // TODO: check data valid and save to db, after saving return Rating list
-        return "rating/add";
+        if (result.hasErrors()) {
+            return "rating/add";
+        }
+        try {
+            model.addAttribute("ratingRequest", ratingRequest);
+            Rating newRating = new Rating(
+                    ratingRequest.getMoodysRating(),
+                    ratingRequest.getSandPRating(),
+                    ratingRequest.getFitchRating(),
+                    ratingRequest.getOrderNumber());
+            ratingService.save(newRating);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "the new rating has been saved succesfully");
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR : the new rating has NOT been saved because of errror " + e);
+
+        }
+        return "redirect:/rating/list";
     }
 
     @GetMapping("/rating/update/{id}")
