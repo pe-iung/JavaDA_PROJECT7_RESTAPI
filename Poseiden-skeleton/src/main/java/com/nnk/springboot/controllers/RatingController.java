@@ -69,14 +69,46 @@ public class RatingController {
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Rating by Id and to model then show to the form
+
+        Rating rating = ratingService.getById(id);
+        RatingRequest ratingRequest = new RatingRequest(
+                rating.getSandPRating(),
+                rating.getMoodysRating(),
+                rating.getFitchRating(),
+                rating.getOrderNumber()
+        );
+        model.addAttribute("ratingRequest", ratingRequest);
+        model.addAttribute("ratingId", id);
         return "rating/update";
     }
 
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Validated Rating rating,
+    public String updateRating(@PathVariable("id") Integer id, @Validated RatingRequest ratingRequest,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
+        if (result.hasErrors())
+        {
+            return "rating/update/{id}";
+        }
+        try {
+
+            Rating updatedRating = ratingService.getById(id);
+            updatedRating.setSandPRating(ratingRequest.getSandPRating());
+            updatedRating.setMoodysRating(ratingRequest.getMoodysRating());
+            updatedRating.setFitchRating(ratingRequest.getFitchRating());
+            updatedRating.setOrderNumber(ratingRequest.getOrderNumber());
+            ratingService.update(updatedRating);
+            model.addAttribute(
+                    "successMessage",
+                    "Rating updated succesfully for id = " + id);
+
+
+        }
+
+        catch (Exception e) {
+            model.addAttribute("errorMessage", "ERROR: rating not updated because of error : " + e);
+        }
+
         return "redirect:/rating/list";
     }
 
