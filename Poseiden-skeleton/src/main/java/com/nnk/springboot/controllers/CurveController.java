@@ -36,7 +36,7 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/validate")
-    public String validate(@Validated CurvePointRequest curvePointRequest, BindingResult result, Model model) {
+    public String validate(@Validated CurvePointRequest curvePointRequest, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         // TODO: check data valid and save to db, after saving return Curve list
         model.addAttribute("curvePointRequest",curvePointRequest);
         model.addAttribute("result",result);
@@ -50,12 +50,20 @@ public class CurveController {
                     curvePointRequest.getValue()
             );
             curvePointService.save(newCurvePoint);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "The new curvePoint has been added succesfully !");
 
 
             return "redirect:/curvePoint/list";
         } catch (Exception e) {
             result.rejectValue("global", "error.global", "An error occurred while saving the bid");
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR: The new curvePoint has NOT been saved because of this error :" + e);
+
             return "curvePoint/add";
+
         }
     }
 
