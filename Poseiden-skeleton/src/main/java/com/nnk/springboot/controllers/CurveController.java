@@ -75,6 +75,7 @@ public class CurveController {
                  curvepoint.getTerm(),
                  curvepoint.getValue());
 
+         model.addAttribute("curvePointId",id);
          model.addAttribute("curvePointRequest", curvePointRequest);
 
         return "curvePoint/update";
