@@ -5,9 +5,25 @@
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<!-- Alerts -->
+			<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+				<span th:text="${successMessage}"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<span th:text="${errorMessage}"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-6">
@@ -25,9 +41,14 @@
 			</form>
 		</div>
 	</div>
+
+
 	<div class="row"><h2>Curve Point List</h2></div>
 	<div class="row">
 		<a href="/curvePoint/add" class="btn btn-primary btn-sm">Add New</a>
+
+
+
 		<table class="table table-bordered">
 			<thead>
 				<tr>

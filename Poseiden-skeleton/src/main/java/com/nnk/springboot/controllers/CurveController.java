@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -75,7 +76,6 @@ public class CurveController {
     @PostMapping("/curvePoint/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Validated CurvePointRequest curvePointRequest,
                              BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Curve and return Curve list
 
         if (result.hasErrors()) {
             return "curvePoint/update";
@@ -91,8 +91,18 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Curve by Id and delete the Curve, return to Curve list
+    public String deleteBid(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes
+    ) {
+        try {
+            curvePointService.delete(id);
+            redirectAttributes.addFlashAttribute ("successMessage", "curvePoint.id " + id + " has been deleted successfully");
+
+        }
+        catch (Exception e)
+        {
+            redirectAttributes.addFlashAttribute ("errorMessage", "ERROR: curvePoint.id" + id + "was not deleted successfully");
+
+        }
         return "redirect:/curvePoint/list";
     }
 }
