@@ -42,7 +42,6 @@ public class RatingController {
             BindingResult result,
             Model model,
             RedirectAttributes redirectAttributes) {
-        // TODO: check data valid and save to db, after saving return Rating list
         if (result.hasErrors()) {
             return "rating/add";
         }
@@ -91,7 +90,6 @@ public class RatingController {
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Validated RatingRequest ratingRequest,
                              BindingResult result, Model model, RedirectAttributes redirectAttributes) {
-        // TODO: check required fields, if valid call service to update Rating and return Rating list
         if (result.hasErrors())
         {
             return "/rating/update/{id}";
@@ -122,7 +120,6 @@ public class RatingController {
 
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
-        // TODO: Find Rating by Id and delete the Rating, return to Rating list
         try {
             ratingService.delete(id);
             redirectAttributes.addFlashAttribute(
