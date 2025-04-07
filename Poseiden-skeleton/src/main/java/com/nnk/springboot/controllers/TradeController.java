@@ -65,14 +65,58 @@ public class TradeController {
 
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer tradeId, Model model) {
-        // TODO: get Trade by Id and to model then show to the form
+
+        Trade trade = tradeService.getById(tradeId);
+        TradeRequest tradeRequest = new TradeRequest(
+                trade.getAccount(),
+                trade.getType(),
+                trade.getBuyQuantity(),
+                trade.getSellQuantity(),
+                trade.getBuyPrice(),
+                trade.getSellPrice()
+        );
+
+        model.addAttribute("tradeId", tradeId);
+        model.addAttribute("tradeRequest", tradeRequest);
         return "trade/update";
     }
 
     @PostMapping("/trade/update/{id}")
-    public String updateTrade(@PathVariable("id") Integer id, @Validated TradeRequest tradeRequest,
-                             BindingResult result, Model model) {
+    public String updateTrade(@PathVariable("id") Integer id,
+                              @Validated TradeRequest tradeRequest,
+                              BindingResult result,
+                              Model model,
+                              RedirectAttributes redirectAttributes) {
         // TODO: check required fields, if valid call service to update Trade and return Trade list
+
+        if (result.hasErrors())
+        {
+            return "redirect:/trade/list";
+        }
+
+        model.addAttribute("tradeId", id);
+        model.addAttribute("tradeRequest", tradeRequest);
+
+        try {
+            Trade updatedTrade = tradeService.getById(id);
+            updatedTrade.setAccount(tradeRequest.getAccount());
+            updatedTrade.setType(tradeRequest.getType());
+            updatedTrade.setBuyQuantity(tradeRequest.getBuyQuantity());
+            updatedTrade.setSellQuantity(tradeRequest.getSellQuantity());
+            updatedTrade.setBuyPrice(tradeRequest.getBuyPrice());
+            updatedTrade.setSellPrice(tradeRequest.getSellPrice());
+
+            tradeService.update(updatedTrade);
+
+            redirectAttributes.addFlashAttribute("successMessage",
+                    "trade with id = " + id + " succesfully updated");
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage",
+                    "ERROR: trade with id = " + id + " NOT updated because of error : " + e);
+
+        }
+
         return "redirect:/trade/list";
     }
 
