@@ -91,7 +91,8 @@ public class TradeController {
 
         if (result.hasErrors())
         {
-            return "redirect:/trade/list";
+            model.addAttribute("tradeId", id);
+            return "trade/update";
         }
 
         model.addAttribute("tradeId", id);
@@ -122,7 +123,20 @@ public class TradeController {
 
     @GetMapping("/trade/delete/{id}")
     public String deleteTrade(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
-        // TODO: Find Trade by Id and delete the Trade, return to Trade list
-        return "redirect:/trade/list";
+        try {
+            tradeService.delete(id);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "the trade with id = " + id + " has been deleted succesfully");
+
+        }
+        catch (Exception e)
+        {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR : the trade with id = " + id + " has not been deleted");
+
+
+        }        return "redirect:/trade/list";
     }
 }
