@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.service.RatingTest" time="0.036" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,16 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.083">
-    <system-out><![CDATA[2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$EtAAsz3H5oyW478NGbMk.udfq9.ccEsg2brU/C4uwqOjN2XgEVeYO ]
+  <testcase name="ratingTest" classname="com.nnk.springboot.service.RatingTest" time="0.027">
+    <system-out><![CDATA[2025-04-07T19:49:44.768+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.service.RatingTest]: RatingTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T19:49:44.770+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.service.RatingTest
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+Hibernate: update rating set fitch_rating=?,moodys_rating=?,order_number=?,sandprating=? where id=?
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+Hibernate: delete from rating where id=?
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
 ]]></system-out>
   </testcase>
 </testsuite>

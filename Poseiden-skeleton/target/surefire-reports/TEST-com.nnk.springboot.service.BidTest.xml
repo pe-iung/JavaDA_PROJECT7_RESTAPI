@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.service.BidTest" time="0.034" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,16 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.083">
-    <system-out><![CDATA[2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$EtAAsz3H5oyW478NGbMk.udfq9.ccEsg2brU/C4uwqOjN2XgEVeYO ]
+  <testcase name="bidListTest" classname="com.nnk.springboot.service.BidTest" time="0.027">
+    <system-out><![CDATA[2025-04-07T19:49:44.848+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.service.BidTest]: BidTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T19:49:44.849+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.service.BidTest
+Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
+Hibernate: update bidlist set account=?,ask=?,ask_quantity=?,benchmark=?,bid=?,bid_list_date=?,bid_quantity=?,book=?,commentary=?,creation_date=?,creation_name=?,deal_name=?,deal_type=?,revision_date=?,revision_name=?,security=?,side=?,source_list_id=?,status=?,trader=?,type=? where bid_list_id=?
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
+Hibernate: delete from bidlist where bid_list_id=?
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
 ]]></system-out>
   </testcase>
 </testsuite>

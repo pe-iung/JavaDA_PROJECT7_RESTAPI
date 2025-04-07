@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.repository.CurvePointTest" time="0.028" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -49,7 +49,7 @@
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="/var/folders/b8/hhxhmpy560jdjl5c033wq4vc0000gn/T/"/>
     <property name="idea.version" value="2024.1.4"/>
-    <property name="com.zaxxer.hikari.pool_number" value="2"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="21.0.3"/>
     <property name="user.dir" value="/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton"/>
     <property name="os.arch" value="aarch64"/>
@@ -66,10 +66,16 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.083">
-    <system-out><![CDATA[2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$EtAAsz3H5oyW478NGbMk.udfq9.ccEsg2brU/C4uwqOjN2XgEVeYO ]
+  <testcase name="curvePointTest" classname="com.nnk.springboot.repository.CurvePointTest" time="0.025">
+    <system-out><![CDATA[2025-04-07T19:49:42.823+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.repository.CurvePointTest]: CurvePointTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T19:49:42.824+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.repository.CurvePointTest
+Hibernate: insert into curvepoint (as_of_date,creation_date,curve_id,term,value) values (?,?,?,?,?)
+Hibernate: select cp1_0.id,cp1_0.as_of_date,cp1_0.creation_date,cp1_0.curve_id,cp1_0.term,cp1_0.value from curvepoint cp1_0 where cp1_0.id=?
+Hibernate: update curvepoint set as_of_date=?,creation_date=?,curve_id=?,term=?,value=? where id=?
+Hibernate: select cp1_0.id,cp1_0.as_of_date,cp1_0.creation_date,cp1_0.curve_id,cp1_0.term,cp1_0.value from curvepoint cp1_0
+Hibernate: select cp1_0.id,cp1_0.as_of_date,cp1_0.creation_date,cp1_0.curve_id,cp1_0.term,cp1_0.value from curvepoint cp1_0 where cp1_0.id=?
+Hibernate: delete from curvepoint where id=?
+Hibernate: select cp1_0.id,cp1_0.as_of_date,cp1_0.creation_date,cp1_0.curve_id,cp1_0.term,cp1_0.value from curvepoint cp1_0 where cp1_0.id=?
 ]]></system-out>
   </testcase>
 </testsuite>

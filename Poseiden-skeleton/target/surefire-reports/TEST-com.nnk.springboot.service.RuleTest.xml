@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.service.RuleTest" time="0.051" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,16 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.083">
-    <system-out><![CDATA[2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T19:49:44.458+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$EtAAsz3H5oyW478NGbMk.udfq9.ccEsg2brU/C4uwqOjN2XgEVeYO ]
+  <testcase name="ruleTest" classname="com.nnk.springboot.service.RuleTest" time="0.033">
+    <system-out><![CDATA[2025-04-07T19:49:44.712+02:00  INFO 5562 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.service.RuleTest]: RuleTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T19:49:44.724+02:00  INFO 5562 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.service.RuleTest
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+Hibernate: update rulename set description=?,json=?,name=?,sql_part=?,sql_str=?,template=? where id=?
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+Hibernate: delete from rulename where id=?
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
 ]]></system-out>
   </testcase>
 </testsuite>
