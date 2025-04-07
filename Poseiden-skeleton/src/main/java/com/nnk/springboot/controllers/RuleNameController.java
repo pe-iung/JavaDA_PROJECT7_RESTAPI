@@ -121,8 +121,23 @@ public class RuleNameController {
     }
 
     @GetMapping("/ruleName/delete/{id}")
-    public String deleteRuleName(@PathVariable("id") Integer id, Model model) {
+    public String deleteRuleName(@PathVariable("id") Integer id, Model model,RedirectAttributes redirectAttributes) {
         // TODO: Find RuleName by Id and delete the RuleName, return to Rule list
+        try {
+            ruleNameService.delete(id);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "the ruleName with id = " + id + " has been deleted succesfully");
+
+        }
+        catch (Exception e)
+        {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR : the ruleName with id = " + id + " has not been deleted");
+
+
+        }
         return "redirect:/ruleName/list";
     }
 }
