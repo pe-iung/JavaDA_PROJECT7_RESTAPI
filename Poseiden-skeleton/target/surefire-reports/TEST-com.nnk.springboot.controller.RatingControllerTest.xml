@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.087" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.RatingControllerTest" time="0.113" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,73 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085">
-    <system-out><![CDATA[2025-04-07T18:53:29.593+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T18:53:29.594+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$Rna1ep0.PqIZGpEj5TCynetcX05F4BPt9ihY5XNuYfkNX7b6wrM6G ]
+  <testcase name="updateRating_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.012">
+    <system-out><![CDATA[2025-04-07T18:53:29.481+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.RatingControllerTest]: RatingControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T18:53:29.482+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.RatingControllerTest
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="validate_WithServiceException_ShouldHandleError" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.008">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: delete from rating where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="showUpdateForm_Success" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.009">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="deleteRating_NonExistentId_ShouldHandleError" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: delete from rating where id=?
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="addRatingForm_ShouldReturnAddPage" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.005">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+]]></system-out>
+  </testcase>
+  <testcase name="validate_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.005">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+]]></system-out>
+  </testcase>
+  <testcase name="showUpdateForm_WithInvalidId_ShouldRedirectWithError" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.005">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="validate_Success" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.006">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="updateRating_Success" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.015">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: delete from rating where id=?
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+Hibernate: update rating set fitch_rating=?,moodys_rating=?,order_number=?,sandprating=? where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="home_ShouldReturnRatingListPage" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.02">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: delete from rating where id=?
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+]]></system-out>
+  </testcase>
+  <testcase name="deleteRating_Success" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.01">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
+Hibernate: delete from rating where id=?
+Hibernate: insert into rating (fitch_rating,moodys_rating,order_number,sandprating) values (?,?,?,?)
+Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0 where r1_0.id=?
+Hibernate: delete from rating where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="accessWithoutAuthentication_ShouldRedirectToLogin" classname="com.nnk.springboot.controller.RatingControllerTest" time="0.004">
+    <system-out><![CDATA[Hibernate: select r1_0.id,r1_0.fitch_rating,r1_0.moodys_rating,r1_0.order_number,r1_0.sandprating from rating r1_0
 ]]></system-out>
   </testcase>
 </testsuite>

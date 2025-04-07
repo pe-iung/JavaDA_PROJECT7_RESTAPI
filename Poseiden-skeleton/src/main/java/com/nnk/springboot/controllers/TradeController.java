@@ -53,12 +53,12 @@ public class TradeController {
             tradeService.save(newTrade);
             redirectAttributes.addFlashAttribute(
                     "successMessage",
-                    "new ruleName added successfully");
+                    "new trade added successfully");
         }
         catch (Exception e) {
             redirectAttributes.addFlashAttribute(
                     "errorMessage",
-                    "ERROR : new ruleName not added because of error : " + e);
+                    "ERROR : new trade not added because of error : " + e);
         }
         return "redirect:/trade/list";
     }
@@ -87,7 +87,7 @@ public class TradeController {
                               BindingResult result,
                               Model model,
                               RedirectAttributes redirectAttributes) {
-        // TODO: check required fields, if valid call service to update Trade and return Trade list
+
 
         if (result.hasErrors())
         {

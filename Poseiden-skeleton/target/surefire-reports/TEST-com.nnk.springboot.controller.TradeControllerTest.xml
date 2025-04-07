@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.087" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.TradeControllerTest" time="0.13" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,74 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085">
-    <system-out><![CDATA[2025-04-07T18:53:29.593+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T18:53:29.594+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$Rna1ep0.PqIZGpEj5TCynetcX05F4BPt9ihY5XNuYfkNX7b6wrM6G ]
+  <testcase name="updateTrade_NonExistentId_ShouldHandleError" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.013">
+    <system-out><![CDATA[2025-04-07T18:53:29.336+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.TradeControllerTest]: TradeControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T18:53:29.337+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.TradeControllerTest
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0 where t1_0.trade_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="addUser_ShouldReturnAddPage" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.008">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+]]></system-out>
+  </testcase>
+  <testcase name="showUpdateForm_Success" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.011">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0 where t1_0.trade_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="deleteTrade_NonExistentId_ShouldHandleError" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.009">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0 where t1_0.trade_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="validate_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+]]></system-out>
+  </testcase>
+  <testcase name="validate_WithInvalidNumbers_ShouldHaveFieldErrors" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+]]></system-out>
+  </testcase>
+  <testcase name="updateTrade_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.009">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="home_ShouldReturnTradeListPage" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.023">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+]]></system-out>
+  </testcase>
+  <testcase name="validate_Success" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.009">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="deleteTrade_Success" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.01">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0 where t1_0.trade_id=?
+Hibernate: delete from trade where trade_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="updateTrade_Success" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.01">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: insert into trade (account,benchmark,book,buy_price,buy_quantity,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,sell_price,sell_quantity,side,source_list_id,status,trade_date,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0 where t1_0.trade_id=?
+Hibernate: update trade set account=?,benchmark=?,book=?,buy_price=?,buy_quantity=?,creation_date=?,creation_name=?,deal_name=?,deal_type=?,revision_date=?,revision_name=?,security=?,sell_price=?,sell_quantity=?,side=?,source_list_id=?,status=?,trade_date=?,trader=?,type=? where trade_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="accessWithoutAuthentication_ShouldRedirectToLogin" classname="com.nnk.springboot.controller.TradeControllerTest" time="0.005">
+    <system-out><![CDATA[Hibernate: select t1_0.trade_id,t1_0.account,t1_0.benchmark,t1_0.book,t1_0.buy_price,t1_0.buy_quantity,t1_0.creation_date,t1_0.creation_name,t1_0.deal_name,t1_0.deal_type,t1_0.revision_date,t1_0.revision_name,t1_0.security,t1_0.sell_price,t1_0.sell_quantity,t1_0.side,t1_0.source_list_id,t1_0.status,t1_0.trade_date,t1_0.trader,t1_0.type from trade t1_0
+Hibernate: delete from trade where trade_id=?
 ]]></system-out>
   </testcase>
 </testsuite>

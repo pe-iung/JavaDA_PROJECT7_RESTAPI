@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.087" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.RuleNameControllerTest" time="0.154" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,71 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085">
-    <system-out><![CDATA[2025-04-07T18:53:29.593+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T18:53:29.594+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$Rna1ep0.PqIZGpEj5TCynetcX05F4BPt9ihY5XNuYfkNX7b6wrM6G ]
+  <testcase name="validate_ShouldCheckSpecificErrorMessages" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.016">
+    <system-out><![CDATA[2025-04-07T18:53:29.074+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.RuleNameControllerTest]: RuleNameControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T18:53:29.075+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.RuleNameControllerTest
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: delete from rulename where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="deleteRuleName_Success" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.013">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+Hibernate: delete from rulename where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="updateRuleName_Success" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.013">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+Hibernate: update rulename set description=?,json=?,name=?,sql_part=?,sql_str=?,template=? where id=?
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="showUpdateForm_Success" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.012">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: delete from rulename where id=?
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="addRuleForm_ShouldReturnAddPage" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.015">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: delete from rulename where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="home_ShouldReturnRuleNameListPage" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.026">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+]]></system-out>
+  </testcase>
+  <testcase name="validate_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.008">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: delete from rulename where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="deleteRuleName_NonExistentId_ShouldHandleError" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0 where rn1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="validate_Success" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.008">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="accessWithoutAuthentication_ShouldRedirectToLogin" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: delete from rulename where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="updateRuleName_WithInvalidData_ShouldReturnToList" classname="com.nnk.springboot.controller.RuleNameControllerTest" time="0.016">
+    <system-out><![CDATA[Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: insert into rulename (description,json,name,sql_part,sql_str,template) values (?,?,?,?,?,?)
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
+Hibernate: select rn1_0.id,rn1_0.description,rn1_0.json,rn1_0.name,rn1_0.sql_part,rn1_0.sql_str,rn1_0.template from rulename rn1_0
 ]]></system-out>
   </testcase>
 </testsuite>

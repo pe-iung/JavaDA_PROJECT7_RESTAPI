@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.PasswordEncodeTest" time="0.087" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nnk.springboot.controller.BidListControllerTest" time="1.06" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,10 +66,80 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPassword" classname="com.nnk.springboot.controller.PasswordEncodeTest" time="0.085">
-    <system-out><![CDATA[2025-04-07T18:53:29.593+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.PasswordEncodeTest]: PasswordEncodeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-04-07T18:53:29.594+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.PasswordEncodeTest
-[ $2a$10$Rna1ep0.PqIZGpEj5TCynetcX05F4BPt9ihY5XNuYfkNX7b6wrM6G ]
+  <testcase name="deleteBid_NonExistentId_ShouldHandleError" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.057">
+    <system-out><![CDATA[2025-04-07T18:53:27.952+02:00  INFO 4251 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nnk.springboot.controller.BidListControllerTest]: BidListControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-07T18:53:27.956+02:00  INFO 4251 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nnk.springboot.Application for test class com.nnk.springboot.controller.BidListControllerTest
+2025-04-07T18:53:27.957+02:00  INFO 4251 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2025-04-07T18:53:27.967+02:00  INFO 4251 --- [           main] c.n.s.controller.BidListControllerTest   : Starting BidListControllerTest using Java 21.0.3 with PID 4251 (started by pe in /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton)
+2025-04-07T18:53:27.968+02:00  INFO 4251 --- [           main] c.n.s.controller.BidListControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2025-04-07T18:53:28.047+02:00  INFO 4251 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-07T18:53:28.056+02:00  INFO 4251 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 6 JPA repository interfaces.
+2025-04-07T18:53:28.105+02:00  INFO 4251 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-07T18:53:28.105+02:00  INFO 4251 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-07T18:53:28.109+02:00  INFO 4251 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-07T18:53:28.110+02:00  INFO 4251 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-04-07T18:53:28.120+02:00  INFO 4251 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@344ab465
+2025-04-07T18:53:28.120+02:00  INFO 4251 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-04-07T18:53:28.121+02:00  INFO 4251 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 9.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-07T18:53:28.201+02:00  INFO 4251 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-07T18:53:28.210+02:00  INFO 4251 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-07T18:53:28.248+02:00  WARN 4251 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-07T18:53:28.251+02:00  INFO 4251 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-04-07T18:53:28.348+02:00  INFO 4251 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-04-07T18:53:28.348+02:00  INFO 4251 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-04-07T18:53:28.349+02:00  INFO 4251 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-04-07T18:53:28.363+02:00  INFO 4251 --- [           main] c.n.s.controller.BidListControllerTest   : Started BidListControllerTest in 0.406 seconds (process running for 3.824)
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
 ]]></system-out>
   </testcase>
+  <testcase name="deleteBid_Success" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.013">
+    <system-out><![CDATA[Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
+Hibernate: delete from bidlist where bid_list_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="showUpdateForm_Success" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.212">
+    <system-out><![CDATA[Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="home_ShouldReturnBidListPage" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.308">
+    <system-out><![CDATA[Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0
+2025-04-07T18:53:28.858+02:00  WARN 4251 --- [           main] n.n.u.t.e.ExpressionProcessor            : Fragment expression "template_layout_navbar" is being wrapped as a Thymeleaf 3 fragment expression (~{...}) for backwards compatibility purposes.  This wrapping will be dropped in the next major version of the expression processor, so please rewrite as a Thymeleaf 3 fragment expression to future-proof your code.  See https://github.com/thymeleaf/thymeleaf/issues/451 for more information.
+]]></system-out>
+  </testcase>
+  <testcase name="addBidForm_ShouldReturnAddPage" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.008"/>
+  <testcase name="validate_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.018"/>
+  <testcase name="validate_Success" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.007">
+    <system-out><![CDATA[Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="updateBid_WithInvalidData_ShouldReturnToForm" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.008">
+    <system-out><![CDATA[Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+]]></system-out>
+  </testcase>
+  <testcase name="updateBid_Success" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.01">
+    <system-out><![CDATA[Hibernate: insert into bidlist (account,ask,ask_quantity,benchmark,bid,bid_list_date,bid_quantity,book,commentary,creation_date,creation_name,deal_name,deal_type,revision_date,revision_name,security,side,source_list_id,status,trader,type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select bl1_0.bid_list_id,bl1_0.account,bl1_0.ask,bl1_0.ask_quantity,bl1_0.benchmark,bl1_0.bid,bl1_0.bid_list_date,bl1_0.bid_quantity,bl1_0.book,bl1_0.commentary,bl1_0.creation_date,bl1_0.creation_name,bl1_0.deal_name,bl1_0.deal_type,bl1_0.revision_date,bl1_0.revision_name,bl1_0.security,bl1_0.side,bl1_0.source_list_id,bl1_0.status,bl1_0.trader,bl1_0.type from bidlist bl1_0 where bl1_0.bid_list_id=?
+Hibernate: update bidlist set account=?,ask=?,ask_quantity=?,benchmark=?,bid=?,bid_list_date=?,bid_quantity=?,book=?,commentary=?,creation_date=?,creation_name=?,deal_name=?,deal_type=?,revision_date=?,revision_name=?,security=?,side=?,source_list_id=?,status=?,trader=?,type=? where bid_list_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="accessWithoutAuthentication_ShouldRedirectToLogin" classname="com.nnk.springboot.controller.BidListControllerTest" time="0.005"/>
 </testsuite>

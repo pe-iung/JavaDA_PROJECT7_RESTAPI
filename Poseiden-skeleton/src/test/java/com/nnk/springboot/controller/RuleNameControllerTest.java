@@ -3,6 +3,7 @@ import com.nnk.springboot.controllers.DTO.RuleNameRequest;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
 import com.nnk.springboot.services.CrudService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -143,6 +146,17 @@ class RuleNameControllerTest {
                 .andExpect(redirectedUrl("/ruleName/list"))
                 .andExpect(flash().attribute("successMessage",
                         "ruleName with id = " + savedRuleName.getId() + " succesfully updated"));
+
+        //when a validation rule is OK, we should update the data in the repository
+        Optional<RuleName> updatedRuleName = ruleNameRepository.findById(savedRuleName.getId());
+        if (updatedRuleName.isPresent()) {
+            Assertions.assertEquals(updatedRuleName.get().getName(), "UpdatedName");
+            Assertions.assertEquals(updatedRuleName.get().getDescription(), "UpdatedDescription");
+            Assertions.assertEquals(updatedRuleName.get().getJson(), "UpdatedJson");
+            Assertions.assertEquals(updatedRuleName.get().getTemplate(), "UpdatedTemplate");
+            Assertions.assertEquals(updatedRuleName.get().getSqlStr(), "UpdatedSqlStr");
+            Assertions.assertEquals(updatedRuleName.get().getSqlPart(), "UpdatedSqlPart");
+        }
     }
 
     // 7. Test update with invalid data
@@ -150,6 +164,7 @@ class RuleNameControllerTest {
     @WithMockUser
     void updateRuleName_WithInvalidData_ShouldReturnToList() throws Exception {
         RuleName savedRuleName = ruleNameService.save(testRuleName);
+        int numberOfRulesBeforeTest = ruleNameRepository.findAll().size();
 
         mvc.perform(post("/ruleName/update/{id}", savedRuleName.getId())
                         .param("name", "") // Invalid: empty name
@@ -163,6 +178,14 @@ class RuleNameControllerTest {
                 .andExpect(model().attributeExists("ruleNameRequest"))
                 .andExpect(model().attributeHasErrors("ruleNameRequest"))
                 .andExpect(model().attributeHasFieldErrors("ruleNameRequest", "name"));
+
+        int numberOfRulesAfterTest = ruleNameRepository.findAll().size();
+
+        //when a validation rule fail, we should not save the wrong rule in the repository
+        Assertions.assertEquals(numberOfRulesBeforeTest,numberOfRulesAfterTest);
+
+        //when a validation rule fail, we should not update the data with invalid empty name
+        Assertions.assertNotEquals(savedRuleName.getName(),"");
     }
 
     // 8. Test successful delete
