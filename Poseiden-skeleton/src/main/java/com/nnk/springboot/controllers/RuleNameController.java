@@ -122,7 +122,6 @@ public class RuleNameController {
 
     @GetMapping("/ruleName/delete/{id}")
     public String deleteRuleName(@PathVariable("id") Integer id, Model model,RedirectAttributes redirectAttributes) {
-        // TODO: Find RuleName by Id and delete the RuleName, return to Rule list
         try {
             ruleNameService.delete(id);
             redirectAttributes.addFlashAttribute(
