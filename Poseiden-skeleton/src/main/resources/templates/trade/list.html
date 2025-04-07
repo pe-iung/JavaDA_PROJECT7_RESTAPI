@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.w3.org/1999/xhtml"
+	  layout:decorate="template_layout_navbar">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
+<div layout:fragment="content1">
 <div class="container">
-	<div class="row">
-		<div class="col-6">
-			<a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
-			<a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
-			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
-			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
-			<a href="/trade/list">Rule</a>
-		</div>
-		<div class="col-6 text-right">
-			Logged in user: <b class="user" sec:authentication="name"></b>
-			<form th:action="@{/app-logout}" method="POST">
-				<input type="submit" value="Logout"/>
-			</form>
-		</div>
-	</div>
+
 	<div class="row"><h2>Trade List</h2></div>
-	<div class="row">
+	<div class="row mb-3"> <!-- Added margin-bottom for spacing -->
+		<div class="col">
 		<a href="/trade/add" class="btn btn-primary btn-sm">Add New</a>
+		</div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -52,5 +43,6 @@
 		</table>
 	</div>
 </div>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
