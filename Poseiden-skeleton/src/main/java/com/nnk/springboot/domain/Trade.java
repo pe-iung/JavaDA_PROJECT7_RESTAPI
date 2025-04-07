@@ -64,6 +64,22 @@ public class Trade  implements EntityModel<Trade> {
         this.type = type;
     }
 
+    public Trade(String account,
+                 String type,
+                 Double buyQuantity,
+                 Double buyPrice,
+                 Double sellPrice,
+                 Double sellQuantity) {
+        this.account = account;
+        this.type = type;
+        this.buyQuantity = buyQuantity;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.sellQuantity = sellQuantity;
+
+
+    }
+
     @Override
     public Integer getId() {
         return tradeId;
