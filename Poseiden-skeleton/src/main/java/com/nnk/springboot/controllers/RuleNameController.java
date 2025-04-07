@@ -92,13 +92,15 @@ public class RuleNameController {
             BindingResult result,
             Model model,
             RedirectAttributes redirectAttributes) {
-        // TODO: check required fields, if valid call service to update RuleName and return RuleName list
-        if (result.hasErrors()) {
-            return "/ruleName/list";
-        }
-
         model.addAttribute("ruleNameId",id);
         model.addAttribute("ruleNameRequest", ruleNameRequest);
+        model.addAttribute("result", result);
+
+        if (result.hasErrors()) {
+            return "/ruleName/update";
+        }
+
+
         try {
             RuleName updatedRuleName = ruleNameService.getById(id);
             updatedRuleName.setName(ruleNameRequest.getName());
@@ -123,6 +125,7 @@ public class RuleNameController {
     @GetMapping("/ruleName/delete/{id}")
     public String deleteRuleName(@PathVariable("id") Integer id, Model model,RedirectAttributes redirectAttributes) {
         try {
+            ruleNameService.getById(id);
             ruleNameService.delete(id);
             redirectAttributes.addFlashAttribute(
                     "successMessage",

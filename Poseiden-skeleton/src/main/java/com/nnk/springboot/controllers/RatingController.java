@@ -90,9 +90,13 @@ public class RatingController {
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Validated RatingRequest ratingRequest,
                              BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+
+       model.addAttribute("ratingId", id);
+       model.addAttribute("ratingRequest", ratingRequest);
+       model.addAttribute("result", result);
         if (result.hasErrors())
         {
-            return "/rating/update/{id}";
+            return "rating/update";
         }
         try {
 
@@ -121,6 +125,7 @@ public class RatingController {
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
+            ratingService.getById(id);
             ratingService.delete(id);
             redirectAttributes.addFlashAttribute(
                     "successMessage",
