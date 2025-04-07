@@ -10,7 +10,7 @@ public interface CrudService<M> {
 
     void update(M entity);
 
-    void delete(Integer id);
+    void delete(Integer id) throws Exception;
 
     List<M> findAll();
 }

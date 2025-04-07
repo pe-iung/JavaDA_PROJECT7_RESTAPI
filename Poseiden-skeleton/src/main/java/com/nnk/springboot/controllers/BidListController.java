@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -102,10 +103,21 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id, Model model) {
+    public String deleteBid(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         // TODO: Find Bid by Id and delete the bid, return to Bid list
         model.addAttribute("id",id);
-        bidService.delete(id);
+        try {
+            bidService.delete(id);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "bidlist was deleted succesfully");
+
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR: an unexpected error occured when trying to delete bidlist");
+        }
         return "redirect:/bidList/list";
     }
 }

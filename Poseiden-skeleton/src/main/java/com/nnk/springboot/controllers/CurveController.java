@@ -4,6 +4,8 @@ import com.nnk.springboot.controllers.DTO.CurvePointRequest;
 import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.services.CrudService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,7 @@ import java.util.List;
 @Controller
 public class CurveController {
 
+    private static final Logger log = LoggerFactory.getLogger(CurveController.class);
     private final CrudService<CurvePoint> curvePointService;
 
     @RequestMapping("/curvePoint/list")
@@ -88,7 +91,9 @@ public class CurveController {
     @PostMapping("/curvePoint/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Validated CurvePointRequest curvePointRequest,
                              BindingResult result, Model model) {
-
+        model.addAttribute("curvePointId",id);
+        model.addAttribute("CurvePointRequest",curvePointRequest);
+        model.addAttribute("result", result);
         if (result.hasErrors()) {
             return "curvePoint/update";
         }
@@ -106,6 +111,8 @@ public class CurveController {
     public String deleteBid(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes
     ) {
         try {
+            CurvePoint curvePoint = curvePointService.getById(id);
+            log.info("we fund this curvePoint : {} ", curvePoint );
             curvePointService.delete(id);
             redirectAttributes.addFlashAttribute ("successMessage", "curvePoint.id " + id + " has been deleted successfully");
 
