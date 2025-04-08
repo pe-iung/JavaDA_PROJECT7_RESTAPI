@@ -28,11 +28,20 @@ public class UserController {
     private final CustomUserDetailsService customUserDetailsService;
     //private final SecurityHelper securityHelper;
 
-    @RequestMapping("admin/user/list")
+    @RequestMapping("admin/users")
     public String home(Model model)
     {
         model.addAttribute("users", userService.findAll());
         return "admin/users";
+    }
+
+    @RequestMapping("403")
+    public String error403(Model model)
+    {
+        model.addAttribute("errorMsg",
+                "sorry, you do not have the authorization to reach this resource");
+
+        return "403";
     }
 
     @GetMapping("/user/add")

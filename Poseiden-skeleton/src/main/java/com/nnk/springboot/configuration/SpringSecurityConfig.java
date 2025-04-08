@@ -77,7 +77,7 @@ public class SpringSecurityConfig {
                         .permitAll()
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
-                        .accessDeniedPage("/403.html"))
+                        .accessDeniedPage("/403"))
 
 
                 .build();
