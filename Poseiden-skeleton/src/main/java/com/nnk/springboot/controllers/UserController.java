@@ -7,8 +7,7 @@ import com.nnk.springboot.domain.User;
 import com.nnk.springboot.services.CrudService;
 import com.nnk.springboot.services.SecurityHelper;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,12 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class UserController {
 
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
     private final CrudService<User> userService;
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -34,6 +33,7 @@ public class UserController {
     public String home(Model model)
     {
         model.addAttribute("users", userService.findAll());
+        log.info("an admin has displayed all users");
         return "admin/users";
     }
 
@@ -43,7 +43,7 @@ public class UserController {
     {
         model.addAttribute("errorMsg",
                 "sorry, you do not have the authorization to reach this resource");
-
+        log.info("a user has tried to access an unauthorized resources with userId = {}", SecurityHelper.getConnectedUser().getId());
         return "403";
     }
 
@@ -71,6 +71,7 @@ public class UserController {
             userService.save(newUser);
             return "redirect:/login";
         }
+        log.debug("some validation errors occured : {}", result.toString());
         return "user/add";
     }
     @GetMapping("admin/user/update/{id}")
@@ -173,13 +174,15 @@ public class UserController {
     }
 
     @GetMapping("admin/user/delete/{id}")
-    public String deleteTrade(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+    public String deleteUser(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
             userService.getById(id);
             userService.delete(id);
             redirectAttributes.addFlashAttribute(
                     "successMessage",
                     "the user with id = " + id + " has been deleted succesfully");
+            log.debug("the following user has been deleted with userId = {}", id);
+
 
         }
         catch (Exception e)
