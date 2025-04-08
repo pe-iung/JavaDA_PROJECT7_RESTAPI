@@ -44,7 +44,7 @@ public class CurveController {
             BindingResult result,
             Model model,
             RedirectAttributes redirectAttributes) {
-        // TODO: check data valid and save to db, after saving return Curve list
+
         model.addAttribute("curvePointRequest",curvePointRequest);
         model.addAttribute("result",result);
         if (result.hasErrors()) {

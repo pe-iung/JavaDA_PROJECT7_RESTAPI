@@ -26,10 +26,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
-    //private final UserRepository userRepository;
     private final CrudService<User> userService;
     private final CustomUserDetailsService customUserDetailsService;
-    //private final SecurityHelper securityHelper;
+
 
     @RequestMapping("admin/users")
     public String home(Model model)

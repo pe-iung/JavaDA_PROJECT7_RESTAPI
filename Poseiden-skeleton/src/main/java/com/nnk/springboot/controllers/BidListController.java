@@ -80,7 +80,6 @@ public class BidListController {
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Validated BidListRequest bidListRequest,
                              BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
         model.addAttribute("bidListId", id);
         model.addAttribute("bidListRequest", bidListRequest);
         model.addAttribute("result", result);
@@ -104,7 +103,7 @@ public class BidListController {
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
-        // TODO: Find Bid by Id and delete the bid, return to Bid list
+
         model.addAttribute("id",id);
         try {
             bidService.delete(id);
