@@ -35,7 +35,7 @@ public class User implements EntityModel<User>, UserDetails {
         this.username = username;
         this.fullname = fullname;
         this.password = encodedPasswword;
-        this.role = "USER";
+        this.role = "ROLE_USER";
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.configuration.CustomUserDetailsService;
 import com.nnk.springboot.controllers.DTO.UserEditRequest;
+import com.nnk.springboot.controllers.DTO.UserRoleEditRequest;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.services.CrudService;
 import com.nnk.springboot.services.SecurityHelper;
@@ -15,8 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequiredArgsConstructor
 @Controller
@@ -35,6 +38,7 @@ public class UserController {
         return "admin/users";
     }
 
+
     @RequestMapping("403")
     public String error403(Model model)
     {
@@ -45,8 +49,13 @@ public class UserController {
     }
 
     @GetMapping("/user/add")
-    public String addUser(User bid) {
+    public String addUser() {
         return "user/add";
+    }
+
+    @GetMapping("/admin/updateUserRole")
+    public String editUserRole() {
+        return "admin/updateUserRole";
     }
 
     @PostMapping("/user/validate")
@@ -61,18 +70,58 @@ public class UserController {
 
 
             userService.save(newUser);
-            //model.addAttribute("users", userRepository.findAll());
             return "redirect:/login";
         }
         return "user/add";
     }
-//    @GetMapping("/user/update/{id}")
-//    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-//        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        user.setPassword("");
-//        model.addAttribute("user", user);
-//        return "user/update";
-//    }
+    @GetMapping("admin/user/update/{id}")
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+
+        User userToEdit = userService.getById(id);
+        UserRoleEditRequest userRoleEditRequest = new UserRoleEditRequest(
+                userToEdit.getUsername(),
+                userToEdit.getFullname(),
+                userToEdit.getRole()
+        );
+
+        model.addAttribute("userRoleEditRequest", userRoleEditRequest);
+        model.addAttribute("userId", id);
+        return "admin/updateUserRole";
+    }
+
+    @PostMapping("admin/user/update/{id}")
+    public String UpdateUserRoleForm(@Validated UserRoleEditRequest userRoleEditRequest,
+                                     BindingResult result,
+                                     @PathVariable("id") Integer id,
+                                     Model model,
+                                     RedirectAttributes redirectAttributes) {
+        model.addAttribute("userRoleEditRequest" , userRoleEditRequest);
+        model.addAttribute("userId", id);
+        model.addAttribute("result", result);
+        if (result.hasErrors()) {
+            return "/admin/updateUserRole" ;
+        }
+        try {
+
+
+            User userToEdit = userService.getById(id);
+            userToEdit.setRole(userRoleEditRequest.getRole());
+            userToEdit.setUsername(userRoleEditRequest.getUsername());
+            userToEdit.setFullname(userRoleEditRequest.getFullname());
+            userService.update(userToEdit);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "user has been edited successfully");
+        }
+
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "user has not been edited because of error :" + e);
+
+        }
+        return "redirect:/admin/users";
+    }
 
     @GetMapping("/user/myself")
     public String showUpdateForm(Model model) {
@@ -124,26 +173,25 @@ public class UserController {
         return "user/add";
     }
 
-//    @PostMapping("/user/update/{id}")
-//    public String updateUser(@PathVariable("id") Integer id, @Validated User user,
-//                             BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            return "user/update";
-//        }
-//
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        user.setPassword(encoder.encode(user.getPassword()));
-//        user.setId(id);
-//        userRepository.save(user);
-//        model.addAttribute("users", userRepository.findAll());
-//        return "redirect:/user/list";
-//    }
+    @GetMapping("admin/user/delete/{id}")
+    public String deleteTrade(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            userService.getById(id);
+            userService.delete(id);
+            redirectAttributes.addFlashAttribute(
+                    "successMessage",
+                    "the user with id = " + id + " has been deleted succesfully");
 
-//    @GetMapping("/user/delete/{id}")
-//    public String deleteUser(@PathVariable("id") Integer id, Model model) {
-//        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        userRepository.delete(user);
-//        model.addAttribute("users", userRepository.findAll());
-//        return "redirect:/user/list";
-//    }
+        }
+        catch (Exception e)
+        {
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "ERROR : the user with id = " + id + " has not been deleted");
+
+
+        }        return "redirect:/admin/users";
+    }
+
+
 }

@@ -34,12 +34,25 @@
             <a href="/trade/list">Trade</a>&nbsp;|&nbsp;
             <a href="/ruleName/list">Rule</a>
         </div>
-        <div class="col-6 text-right">
+        <!--<div class="col-6 text-right">
             Logged in user:
             <b class="user" sec:authentication="name"></b>
             <form th:action="@{/logout}" method="POST">
                 <input type="submit" value="Logout"/>
             </form>
+        </div>-->
+
+        <div class="col-6 text-right">
+            <th:block th:if="${#authentication.principal != 'anonymousUser'}">
+                Logged in user: <b class="user" sec:authentication="name"></b>
+                <form th:action="@{/logout}" method="POST">
+                    <input type="submit" value="Logout"/>
+                </form>
+            </th:block>
+            <th:block th:unless="${#authentication.principal != 'anonymousUser'}">
+                <a th:href="@{/app/login}" class="btn btn-primary">Login</a>
+                or <a href="/signup">signup</a>
+            </th:block>
         </div>
     </div>
 </div>
