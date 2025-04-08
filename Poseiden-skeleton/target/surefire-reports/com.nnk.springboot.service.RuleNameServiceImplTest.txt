@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.service.RuleNameServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.nnk.springboot.service.RuleNameServiceImplTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in com.nnk.springboot.service.RuleNameServiceImplTest
+com.nnk.springboot.service.RuleNameServiceImplTest.update_ShouldUpdateAllFields -- Time elapsed: 0.078 s
+com.nnk.springboot.service.RuleNameServiceImplTest.save_WithNonNullId_ShouldThrowException -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.getById_ShouldReturnRuleName -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.update_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.update_ShouldUpdateExistingRuleName -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.delete_ShouldDeleteRuleName -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.save_ShouldSaveNewRuleName -- Time elapsed: 0.001 s
+com.nnk.springboot.service.RuleNameServiceImplTest.findAll_ShouldReturnAllRuleNames -- Time elapsed: 0.001 s

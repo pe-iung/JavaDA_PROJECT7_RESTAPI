@@ -2,11 +2,23 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+import java.util.List;
 
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "users")
-public class User  implements EntityModel<User> {
+public class User implements EntityModel<User>, UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -19,8 +31,11 @@ public class User  implements EntityModel<User> {
     @NotBlank(message = "Role is mandatory")
     private String role;
 
-    public Integer getId() {
-        return id;
+    public User(String username, String fullname, String encodedPasswword) {
+        this.username = username;
+        this.fullname = fullname;
+        this.password = encodedPasswword;
+        this.role = "USER";
     }
 
     @Override
@@ -33,32 +48,24 @@ public class User  implements EntityModel<User> {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    /**
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(this::getRole);
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
     public void setFullname(String fullname) {
         this.fullname = fullname;
-    }
-
-    public String getRole() {
-        return role;
     }
 
     public void setRole(String role) {

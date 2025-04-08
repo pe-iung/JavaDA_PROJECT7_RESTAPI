@@ -1,4 +1,5 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.repository.TradeTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in com.nnk.springboot.repository.TradeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.nnk.springboot.repository.TradeTest
+com.nnk.springboot.repository.TradeTest.tradeTest -- Time elapsed: 0.020 s

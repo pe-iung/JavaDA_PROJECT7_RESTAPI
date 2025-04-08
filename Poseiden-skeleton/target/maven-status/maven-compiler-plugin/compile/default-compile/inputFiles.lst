@@ -1,4 +1,5 @@
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/Application.java
+/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/configuration/CustomUserDetailsService.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/configuration/SpringSecurityConfig.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/configuration/ThymeleafConfig.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/BidListController.java
@@ -8,6 +9,8 @@
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/DTO/RatingRequest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/DTO/RuleNameRequest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/DTO/TradeRequest.java
+/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/DTO/UserEditRequest.java
+/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/DTO/UserRoleEditRequest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/HomeController.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/LoginController.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/RatingController.java
@@ -29,6 +32,7 @@
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/UserRepository.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/AbstractCrudService.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/CrudService.java
+/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/SecurityHelper.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/impl/BidServiceImpl.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/impl/CurvePointServiceImpl.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/impl/RatingServiceImpl.java

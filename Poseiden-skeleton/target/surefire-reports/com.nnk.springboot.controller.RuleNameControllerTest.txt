@@ -1,4 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.RuleNameControllerTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.145 s -- in com.nnk.springboot.controller.RuleNameControllerTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s -- in com.nnk.springboot.controller.RuleNameControllerTest
+com.nnk.springboot.controller.RuleNameControllerTest.validate_ShouldCheckSpecificErrorMessages -- Time elapsed: 0.020 s
+com.nnk.springboot.controller.RuleNameControllerTest.deleteRuleName_Success -- Time elapsed: 0.016 s
+com.nnk.springboot.controller.RuleNameControllerTest.updateRuleName_Success -- Time elapsed: 0.018 s
+com.nnk.springboot.controller.RuleNameControllerTest.showUpdateForm_Success -- Time elapsed: 0.017 s
+com.nnk.springboot.controller.RuleNameControllerTest.addRuleForm_ShouldReturnAddPage -- Time elapsed: 0.012 s
+com.nnk.springboot.controller.RuleNameControllerTest.home_ShouldReturnRuleNameListPage -- Time elapsed: 0.027 s
+com.nnk.springboot.controller.RuleNameControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.009 s
+com.nnk.springboot.controller.RuleNameControllerTest.deleteRuleName_NonExistentId_ShouldHandleError -- Time elapsed: 0.007 s
+com.nnk.springboot.controller.RuleNameControllerTest.validate_Success -- Time elapsed: 0.006 s
+com.nnk.springboot.controller.RuleNameControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.005 s
+com.nnk.springboot.controller.RuleNameControllerTest.updateRuleName_WithInvalidData_ShouldReturnToList -- Time elapsed: 0.016 s

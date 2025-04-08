@@ -1,4 +1,5 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.repository.RuleTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.092 s -- in com.nnk.springboot.repository.RuleTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.720 s -- in com.nnk.springboot.repository.RuleTest
+com.nnk.springboot.repository.RuleTest.ruleTest -- Time elapsed: 0.580 s

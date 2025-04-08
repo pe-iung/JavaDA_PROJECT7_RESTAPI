@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="template_layout_navbar">
 <head>
-    <title> Spring Boot </title>
-    <link rel="stylesheet" href="/css/styles.css"/>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
+<div layout:fragment="content1">
+    <div class="container">
+
 <h3> HOME PAGE </h3>
 <p>
-    <a href="/login">Login</a> or <a href="/user/list">signup</a>
+    <a href="/login">Login</a> or <a href="/signup">signup</a>
 </p>
-<div class="col-6">
-    <a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
-    <a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
-    <a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
-    <a href="/trade/list">Trade</a>&nbsp;|&nbsp;
-    <a href="/ruleName/list">Rule</a>
+    </div>
 </div>
 </body>
 </html>

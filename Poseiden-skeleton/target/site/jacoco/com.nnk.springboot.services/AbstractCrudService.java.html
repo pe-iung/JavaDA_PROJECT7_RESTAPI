@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractCrudService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.services</a> &gt; <span class="el_source">AbstractCrudService.java</span></div><h1>AbstractCrudService.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.services;
+
+
+import com.nnk.springboot.domain.EntityModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+public abstract class AbstractCrudService&lt;M extends EntityModel&lt;M&gt;&gt; implements CrudService&lt;M&gt; {
+
+    private  final JpaRepository&lt;M, Integer&gt; repository;
+    
+<span class="fc" id="L14">    protected AbstractCrudService(JpaRepository&lt;M, Integer&gt; repository){</span>
+<span class="fc" id="L15">        this.repository = repository;</span>
+<span class="fc" id="L16">    }</span>
+    
+    @Override
+    public M save(M entity) {
+<span class="fc" id="L20">        Assert.isNull(entity.getId(), &quot;Id need to be null&quot;);</span>
+<span class="fc" id="L21">        return this.repository.save(entity);</span>
+    }
+
+    @Override
+    public M getById(Integer id) {
+<span class="fc" id="L26">        return this.repository.findById(id).orElseThrow();</span>
+    }
+
+    @Override
+    public void update(M entity) {
+<span class="fc" id="L31">        M updatedEntity = getById(entity.getId())</span>
+<span class="fc" id="L32">                .update(entity);</span>
+
+<span class="fc" id="L34">        this.repository.save(updatedEntity);</span>
+
+<span class="fc" id="L36">    }</span>
+
+    @Override
+    public void delete(Integer id) {
+<span class="fc" id="L40">        this.repository.deleteById(id);</span>
+<span class="fc" id="L41">    }</span>
+
+    @Override
+    public List&lt;M&gt; findAll() {
+<span class="fc" id="L45">        return this.repository.findAll();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

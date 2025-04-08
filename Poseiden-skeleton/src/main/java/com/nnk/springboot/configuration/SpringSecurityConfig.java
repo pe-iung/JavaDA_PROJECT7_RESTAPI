@@ -9,22 +9,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.time.Clock;
-import java.util.Collection;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
-    //private final CustomUserDetailsService customUserDetailsService;
+
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Bean
     Clock clock(){
@@ -33,31 +28,31 @@ public class SpringSecurityConfig {
 
     private final UserRepository userRepository;
 
-    @Bean
-    public UserDetailsService customUserDetailsService() {
-        return (String username) -> userRepository.findByUsername(username)
-                .map(user -> new UserDetails() {
-                    @Override
-                    public Collection<? extends GrantedAuthority> getAuthorities() {
-                        return List.of(new SimpleGrantedAuthority(user.getRole()));
-                    }
-
-                    @Override
-                    public String getPassword() {
-                        return user.getPassword();
-                    }
-
-                    @Override
-                    public String getUsername() {
-                        return user.getUsername();
-                    }
-
-                    public int getId() {
-                        return user.getId();
-                    }
-                })
-                .orElseThrow();
-    }
+//    @Bean
+//    public UserDetailsService CustomUserDetailsService() {
+//        return (String username) -> userRepository.findByUsername(username)
+//                .map(user -> new UserDetails() {
+//                    @Override
+//                    public Collection<? extends GrantedAuthority> getAuthorities() {
+//                        return List.of(new SimpleGrantedAuthority(user.getRole()));
+//                    }
+//
+//                    @Override
+//                    public String getPassword() {
+//                        return user.getPassword();
+//                    }
+//
+//                    @Override
+//                    public String getUsername() {
+//                        return user.getUsername();
+//                    }
+//
+//                    public int getId() {
+//                        return user.getId();
+//                    }
+//                })
+//                .orElseThrow();
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -66,6 +61,7 @@ public class SpringSecurityConfig {
                     auth.requestMatchers("/h2-console").permitAll()
                     .requestMatchers("/app/login").permitAll()
                     .requestMatchers("/signup", "/css/**", "/js/**", "/webjars/**").permitAll()
+                    .requestMatchers("/user/add", "/user/validate").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated();
                 })
@@ -95,7 +91,7 @@ public class SpringSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(this.customUserDetailsService()).passwordEncoder(bCryptPasswordEncoder);
+        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
         return authenticationManagerBuilder.build();
     }
 }

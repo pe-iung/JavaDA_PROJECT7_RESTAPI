@@ -1,4 +1,5 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.repository.RatingTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.nnk.springboot.repository.RatingTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in com.nnk.springboot.repository.RatingTest
+com.nnk.springboot.repository.RatingTest.ratingTest -- Time elapsed: 0.026 s

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.service.TradeServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.163 s -- in com.nnk.springboot.service.TradeServiceImplTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.388 s -- in com.nnk.springboot.service.TradeServiceImplTest
+com.nnk.springboot.service.TradeServiceImplTest.update_ShouldUpdateAllFields -- Time elapsed: 0.366 s
+com.nnk.springboot.service.TradeServiceImplTest.save_WithNonNullId_ShouldThrowException -- Time elapsed: 0.003 s
+com.nnk.springboot.service.TradeServiceImplTest.update_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.003 s
+com.nnk.springboot.service.TradeServiceImplTest.getById_ShouldReturnTrade -- Time elapsed: 0.002 s
+com.nnk.springboot.service.TradeServiceImplTest.save_ShouldSaveNewTrade -- Time elapsed: 0.002 s
+com.nnk.springboot.service.TradeServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.002 s
+com.nnk.springboot.service.TradeServiceImplTest.findAll_ShouldReturnAllTrades -- Time elapsed: 0.002 s
+com.nnk.springboot.service.TradeServiceImplTest.delete_ShouldDeleteTrade -- Time elapsed: 0.003 s
+com.nnk.springboot.service.TradeServiceImplTest.update_ShouldUpdateExistingTrade -- Time elapsed: 0.002 s

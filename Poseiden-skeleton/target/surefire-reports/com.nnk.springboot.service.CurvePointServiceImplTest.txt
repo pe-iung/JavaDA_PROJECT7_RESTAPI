@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.service.CurvePointServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s -- in com.nnk.springboot.service.CurvePointServiceImplTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.nnk.springboot.service.CurvePointServiceImplTest
+com.nnk.springboot.service.CurvePointServiceImplTest.delete_ShouldDeleteCurvePoint -- Time elapsed: 0.073 s
+com.nnk.springboot.service.CurvePointServiceImplTest.save_WithNonNullId_ShouldThrowException -- Time elapsed: 0.002 s
+com.nnk.springboot.service.CurvePointServiceImplTest.findAll_ShouldReturnAllCurvePoints -- Time elapsed: 0.002 s
+com.nnk.springboot.service.CurvePointServiceImplTest.update_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.002 s
+com.nnk.springboot.service.CurvePointServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.001 s
+com.nnk.springboot.service.CurvePointServiceImplTest.getById_ShouldReturnCurvePoint -- Time elapsed: 0.001 s
+com.nnk.springboot.service.CurvePointServiceImplTest.save_ShouldSaveNewCurvePoint -- Time elapsed: 0.002 s
+com.nnk.springboot.service.CurvePointServiceImplTest.update_ShouldUpdateExistingCurvePoint -- Time elapsed: 0.002 s

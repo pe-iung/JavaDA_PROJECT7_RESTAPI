@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.service.BidServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s -- in com.nnk.springboot.service.BidServiceImplTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s -- in com.nnk.springboot.service.BidServiceImplTest
+com.nnk.springboot.service.BidServiceImplTest.save_WithNonNullId_ShouldThrowException -- Time elapsed: 0.069 s
+com.nnk.springboot.service.BidServiceImplTest.findAll_ShouldReturnAllBids -- Time elapsed: 0.002 s
+com.nnk.springboot.service.BidServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.001 s
+com.nnk.springboot.service.BidServiceImplTest.getById_ShouldReturnBid -- Time elapsed: 0.002 s
+com.nnk.springboot.service.BidServiceImplTest.update_ShouldUpdateExistingBid -- Time elapsed: 0.002 s
+com.nnk.springboot.service.BidServiceImplTest.save_ShouldSaveNewBid -- Time elapsed: 0.001 s
+com.nnk.springboot.service.BidServiceImplTest.delete_ShouldDeleteBid -- Time elapsed: 0.001 s
