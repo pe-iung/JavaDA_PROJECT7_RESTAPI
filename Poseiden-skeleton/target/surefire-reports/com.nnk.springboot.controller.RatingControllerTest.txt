@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.RatingControllerTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s -- in com.nnk.springboot.controller.RatingControllerTest
-com.nnk.springboot.controller.RatingControllerTest.updateRating_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.015 s
-com.nnk.springboot.controller.RatingControllerTest.validate_WithServiceException_ShouldHandleError -- Time elapsed: 0.009 s
-com.nnk.springboot.controller.RatingControllerTest.showUpdateForm_Success -- Time elapsed: 0.011 s
-com.nnk.springboot.controller.RatingControllerTest.deleteRating_NonExistentId_ShouldHandleError -- Time elapsed: 0.006 s
-com.nnk.springboot.controller.RatingControllerTest.addRatingForm_ShouldReturnAddPage -- Time elapsed: 0.005 s
-com.nnk.springboot.controller.RatingControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.005 s
-com.nnk.springboot.controller.RatingControllerTest.showUpdateForm_WithInvalidId_ShouldRedirectWithError -- Time elapsed: 0.005 s
-com.nnk.springboot.controller.RatingControllerTest.validate_Success -- Time elapsed: 0.006 s
-com.nnk.springboot.controller.RatingControllerTest.updateRating_Success -- Time elapsed: 0.012 s
-com.nnk.springboot.controller.RatingControllerTest.home_ShouldReturnRatingListPage -- Time elapsed: 0.023 s
-com.nnk.springboot.controller.RatingControllerTest.deleteRating_Success -- Time elapsed: 0.013 s
-com.nnk.springboot.controller.RatingControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.005 s
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s -- in com.nnk.springboot.controller.RatingControllerTest
+com.nnk.springboot.controller.RatingControllerTest.updateRating_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.018 s
+com.nnk.springboot.controller.RatingControllerTest.validate_WithServiceException_ShouldHandleError -- Time elapsed: 0.010 s
+com.nnk.springboot.controller.RatingControllerTest.showUpdateForm_Success -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.RatingControllerTest.deleteRating_NonExistentId_ShouldHandleError -- Time elapsed: 0.008 s
+com.nnk.springboot.controller.RatingControllerTest.addRatingForm_ShouldReturnAddPage -- Time elapsed: 0.007 s
+com.nnk.springboot.controller.RatingControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.007 s
+com.nnk.springboot.controller.RatingControllerTest.showUpdateForm_WithInvalidId_ShouldRedirectWithError -- Time elapsed: 0.006 s
+com.nnk.springboot.controller.RatingControllerTest.validate_Success -- Time elapsed: 0.007 s
+com.nnk.springboot.controller.RatingControllerTest.updateRating_Success -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.RatingControllerTest.home_ShouldReturnRatingListPage -- Time elapsed: 0.032 s
+com.nnk.springboot.controller.RatingControllerTest.deleteRating_Success -- Time elapsed: 0.011 s
+com.nnk.springboot.controller.RatingControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.004 s

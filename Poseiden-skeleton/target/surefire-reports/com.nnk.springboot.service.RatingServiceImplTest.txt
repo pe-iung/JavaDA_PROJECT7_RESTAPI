@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.service.RatingServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s -- in com.nnk.springboot.service.RatingServiceImplTest
-com.nnk.springboot.service.RatingServiceImplTest.delete_ShouldDeleteRating -- Time elapsed: 0.067 s
-com.nnk.springboot.service.RatingServiceImplTest.save_ShouldSaveNewRating -- Time elapsed: 0.002 s
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in com.nnk.springboot.service.RatingServiceImplTest
+com.nnk.springboot.service.RatingServiceImplTest.delete_ShouldDeleteRating -- Time elapsed: 0.049 s
+com.nnk.springboot.service.RatingServiceImplTest.save_ShouldSaveNewRating -- Time elapsed: 0.001 s
 com.nnk.springboot.service.RatingServiceImplTest.save_WithNonNullId_ShouldThrowException -- Time elapsed: 0.001 s
-com.nnk.springboot.service.RatingServiceImplTest.update_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.001 s
-com.nnk.springboot.service.RatingServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0.002 s
+com.nnk.springboot.service.RatingServiceImplTest.update_WithNonExistentId_ShouldThrowException -- Time elapsed: 0 s
+com.nnk.springboot.service.RatingServiceImplTest.getById_WithNonExistentId_ShouldThrowException -- Time elapsed: 0 s
 com.nnk.springboot.service.RatingServiceImplTest.findAll_ShouldReturnAllRatings -- Time elapsed: 0.001 s
 com.nnk.springboot.service.RatingServiceImplTest.getById_ShouldReturnRating -- Time elapsed: 0.001 s
 com.nnk.springboot.service.RatingServiceImplTest.update_ShouldUpdateExistingRating -- Time elapsed: 0.001 s

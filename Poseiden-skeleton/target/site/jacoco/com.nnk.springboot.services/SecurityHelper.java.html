@@ -8,10 +8,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 
     public static boolean isConnected(){
-<span class="nc bnc" id="L11" title="All 2 branches missed.">        return SecurityContextHolder.getContext() == null</span>
-<span class="nc bnc" id="L12" title="All 2 branches missed.">                || SecurityContextHolder.getContext().getAuthentication() == null</span>
-<span class="nc bnc" id="L13" title="All 2 branches missed.">                || SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null</span>
-<span class="nc bnc" id="L14" title="All 2 branches missed.">                || !(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User);</span>
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        return SecurityContextHolder.getContext() == null</span>
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">                || SecurityContextHolder.getContext().getAuthentication() == null</span>
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">                || SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null</span>
+<span class="pc bpc" id="L14" title="1 of 2 branches missed.">                || !(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User);</span>
     }
     /**
      * get the user currently connected
@@ -19,11 +19,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
      */
     public static User getConnectedUser()
     {
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(isConnected()) {</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if(isConnected()) {</span>
 <span class="nc" id="L23">            throw new BadCredentialsException(&quot;User not connected&quot;);</span>
         }
 
-<span class="nc" id="L26">        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span>
+<span class="fc" id="L26">        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span>
     }
 
 }

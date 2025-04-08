@@ -4,6 +4,7 @@
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/controller/RatingControllerTest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/controller/RuleNameControllerTest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/controller/TradeControllerTest.java
+/Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/controller/UserControllerTest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/repository/BidTest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/repository/CurvePointTest.java
 /Users/pe/openClassRoom/0_projets/P7/devP7/Poseiden-skeleton/src/test/java/com/nnk/springboot/repository/RatingTest.java

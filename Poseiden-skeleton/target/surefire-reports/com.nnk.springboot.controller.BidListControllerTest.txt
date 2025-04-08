@@ -1,14 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.BidListControllerTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.375 s -- in com.nnk.springboot.controller.BidListControllerTest
-com.nnk.springboot.controller.BidListControllerTest.deleteBid_NonExistentId_ShouldHandleError -- Time elapsed: 0.087 s
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.814 s -- in com.nnk.springboot.controller.BidListControllerTest
+com.nnk.springboot.controller.BidListControllerTest.deleteBid_NonExistentId_ShouldHandleError -- Time elapsed: 0.021 s
 com.nnk.springboot.controller.BidListControllerTest.deleteBid_Success -- Time elapsed: 0.012 s
-com.nnk.springboot.controller.BidListControllerTest.showUpdateForm_Success -- Time elapsed: 0.307 s
-com.nnk.springboot.controller.BidListControllerTest.home_ShouldReturnBidListPage -- Time elapsed: 0.382 s
+com.nnk.springboot.controller.BidListControllerTest.showUpdateForm_Success -- Time elapsed: 0.040 s
+com.nnk.springboot.controller.BidListControllerTest.home_ShouldReturnBidListPage -- Time elapsed: 0.085 s
 com.nnk.springboot.controller.BidListControllerTest.addBidForm_ShouldReturnAddPage -- Time elapsed: 0.008 s
-com.nnk.springboot.controller.BidListControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.027 s
-com.nnk.springboot.controller.BidListControllerTest.validate_Success -- Time elapsed: 0.008 s
-com.nnk.springboot.controller.BidListControllerTest.updateBid_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.009 s
-com.nnk.springboot.controller.BidListControllerTest.updateBid_Success -- Time elapsed: 0.012 s
-com.nnk.springboot.controller.BidListControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.007 s
+com.nnk.springboot.controller.BidListControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.011 s
+com.nnk.springboot.controller.BidListControllerTest.validate_Success -- Time elapsed: 0.009 s
+com.nnk.springboot.controller.BidListControllerTest.updateBid_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.010 s
+com.nnk.springboot.controller.BidListControllerTest.updateBid_Success -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.BidListControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.006 s

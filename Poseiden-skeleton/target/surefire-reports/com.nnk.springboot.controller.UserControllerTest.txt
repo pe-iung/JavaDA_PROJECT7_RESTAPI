@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.controller.UserControllerTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.737 s -- in com.nnk.springboot.controller.UserControllerTest
+com.nnk.springboot.controller.UserControllerTest.adminUsers_WhenUser_ShouldBeDenied -- Time elapsed: 0.085 s
+com.nnk.springboot.controller.UserControllerTest.validate_NewUser_ShouldRedirectToLogin -- Time elapsed: 0.216 s
+com.nnk.springboot.controller.UserControllerTest.adminUsers_WhenAdmin_ShouldShowUsersList -- Time elapsed: 1.052 s
+com.nnk.springboot.controller.UserControllerTest.updateUserRole_WithException_ShouldShowError -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.UserControllerTest.updateUserRole_Success -- Time elapsed: 0.006 s
+com.nnk.springboot.controller.UserControllerTest.updateUserRole_WithInvalidData_ShouldShowErrors -- Time elapsed: 0.031 s
+com.nnk.springboot.controller.UserControllerTest.updateUserRole_WithInvalidData_ShouldShowErrors2 -- Time elapsed: 0.009 s
+com.nnk.springboot.controller.UserControllerTest.publicPages_ShouldBeAccessibleWithoutAuth -- Time elapsed: 0.010 s
+com.nnk.springboot.controller.UserControllerTest.updateMyself_Success -- Time elapsed: 0.109 s
+com.nnk.springboot.controller.UserControllerTest.validate_WithInvalidData_ShouldShowErrors -- Time elapsed: 0.008 s

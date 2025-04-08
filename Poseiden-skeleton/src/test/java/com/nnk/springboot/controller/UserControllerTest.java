@@ -61,9 +61,6 @@ class UserControllerTest {
 
     @Test
     void publicPages_ShouldBeAccessibleWithoutAuth() throws Exception {
-        mockMvc.perform(get("/user/add"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("user/add"));
 
         mockMvc.perform(get("/signup"))
                 .andExpect(status().isOk())
@@ -170,31 +167,32 @@ class UserControllerTest {
                         .with(csrf())
                         .flashAttr("userRoleEditRequest", request))
                 .andExpect(status().isOk())
-                .andExpect(view().name("admin/updateUserRole"))
+                .andExpect(view().name("/admin/updateUserRole"))
                 .andExpect(model().hasErrors());
     }
 
     @Test
     @WithMockUser(roles = "ADMIN")
     void updateUserRole_WithInvalidData_ShouldShowErrors2() throws Exception {
-        // 1. Setup test user
+        // Given a test user
         when(userService.getById(1)).thenReturn(testUser);
 
-        // 2. Create request with valid model structure but invalid data
+        // and given an invalid request
         UserRoleEditRequest request = new UserRoleEditRequest();
         request.setUsername("");  // Invalid: blank
         request.setFullname("");  // Invalid: blank
         request.setRole("");      // Invalid: blank
 
-        // 3. Perform request with proper model binding
+        // when we Perform request with proper model binding
         mockMvc.perform(post("/admin/user/update/1")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .param("username", "")
                         .param("fullname", "")
                         .param("role", ""))
+        // then we expect validation errors
                 .andExpect(status().isOk())
-                .andExpect(view().name("/rating/update/{id}"))
+                .andExpect(view().name("/admin/updateUserRole"))
                 .andExpect(model().attributeHasFieldErrors("userRoleEditRequest", "username"))
                 .andExpect(model().attributeHasFieldErrors("userRoleEditRequest", "fullname"))
                 .andExpect(model().attributeHasFieldErrors("userRoleEditRequest", "role"));

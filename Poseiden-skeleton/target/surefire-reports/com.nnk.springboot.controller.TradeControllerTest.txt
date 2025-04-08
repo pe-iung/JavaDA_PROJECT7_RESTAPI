@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.TradeControllerTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.229 s -- in com.nnk.springboot.controller.TradeControllerTest
-com.nnk.springboot.controller.TradeControllerTest.updateTrade_NonExistentId_ShouldHandleError -- Time elapsed: 0.013 s
-com.nnk.springboot.controller.TradeControllerTest.addUser_ShouldReturnAddPage -- Time elapsed: 0.008 s
-com.nnk.springboot.controller.TradeControllerTest.showUpdateForm_Success -- Time elapsed: 0.011 s
-com.nnk.springboot.controller.TradeControllerTest.deleteTrade_NonExistentId_ShouldHandleError -- Time elapsed: 0.009 s
-com.nnk.springboot.controller.TradeControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.007 s
-com.nnk.springboot.controller.TradeControllerTest.validate_WithInvalidNumbers_ShouldHaveFieldErrors -- Time elapsed: 0.006 s
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.153 s -- in com.nnk.springboot.controller.TradeControllerTest
+com.nnk.springboot.controller.TradeControllerTest.updateTrade_NonExistentId_ShouldHandleError -- Time elapsed: 0.016 s
+com.nnk.springboot.controller.TradeControllerTest.addUser_ShouldReturnAddPage -- Time elapsed: 0.009 s
+com.nnk.springboot.controller.TradeControllerTest.showUpdateForm_Success -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.TradeControllerTest.deleteTrade_NonExistentId_ShouldHandleError -- Time elapsed: 0.010 s
+com.nnk.springboot.controller.TradeControllerTest.validate_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.008 s
+com.nnk.springboot.controller.TradeControllerTest.validate_WithInvalidNumbers_ShouldHaveFieldErrors -- Time elapsed: 0.007 s
 com.nnk.springboot.controller.TradeControllerTest.updateTrade_WithInvalidData_ShouldReturnToForm -- Time elapsed: 0.009 s
-com.nnk.springboot.controller.TradeControllerTest.home_ShouldReturnTradeListPage -- Time elapsed: 0.026 s
-com.nnk.springboot.controller.TradeControllerTest.validate_Success -- Time elapsed: 0.091 s
-com.nnk.springboot.controller.TradeControllerTest.deleteTrade_Success -- Time elapsed: 0.019 s
-com.nnk.springboot.controller.TradeControllerTest.updateTrade_Success -- Time elapsed: 0.013 s
-com.nnk.springboot.controller.TradeControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.005 s
+com.nnk.springboot.controller.TradeControllerTest.home_ShouldReturnTradeListPage -- Time elapsed: 0.027 s
+com.nnk.springboot.controller.TradeControllerTest.validate_Success -- Time elapsed: 0.011 s
+com.nnk.springboot.controller.TradeControllerTest.deleteTrade_Success -- Time elapsed: 0.013 s
+com.nnk.springboot.controller.TradeControllerTest.updateTrade_Success -- Time elapsed: 0.014 s
+com.nnk.springboot.controller.TradeControllerTest.accessWithoutAuthentication_ShouldRedirectToLogin -- Time elapsed: 0.006 s
